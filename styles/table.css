@@ -24,6 +24,10 @@ table {
     text-align: center;
   }
   
+  .table td{
+    vertical-align: middle;
+  }
+
   table th {
     font-size: .85em;
     letter-spacing: .1em;

@@ -12,51 +12,10 @@
     left: 50%;
     transform: translate(-50%, -50%);
     
-    width: 280px;
+    width: 450px;
     margin: 0 auto;
     background-color: #fcfcfc;
     padding: 20px 50px 40px;
     box-shadow: 1px 4px 10px 1px #aaa;
     font-family: sans-serif;
-  }
-  
-  #add-item-content-form * {
-      box-sizing: border-box;
-  }
-  
-  #add-item-content-form h2{
-    text-align: center;
-    margin-bottom: 30px;
-  }
-  
-  #add-item-content-form input {
-    margin-bottom: 15px;
-  }
-  
-  #add-item-content-form input[type=text] {
-    display: block;
-    height: 32px;
-    padding: 6px 16px;
-    width: 100%;
-    border: none;
-    background-color: #f3f3f3;
-  }
-  
-  #add-item-content-form label {
-    color: #777;
-    font-size: 0.8em;
-  }
-  
-  #add-item-content-form button[type=submit] {
-    display: block;
-    margin: 20px auto 0;
-    width: 150px;
-    height: 40px;
-    border-radius: 25px;
-    border: none;
-    color: #eee;
-    font-weight: 700;
-    box-shadow: 1px 4px 10px 1px #aaa;
-    
-    background: #207cca;
   }

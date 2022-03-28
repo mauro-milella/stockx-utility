@@ -50,8 +50,9 @@ $("#add-button").click(function(){
             <td data-label="SKU">` + INPUTVAL_sku  + `</td>
             <td data-label="tags">` + INPUTVAL_tags  + `</td>
             <td>
-                <button class="button-edit">Modifica</button>
-                <button class="button-delete" onclick="delete_item(this)">Elimina</button>
+                <button class="btn btn-warning" onclick="modify_item(this)">Modifica</button>
+                <hr>
+                <button class="btn btn-danger" onclick="delete_item(this)">Elimina</button>
             </td>
         </tr>`
     );
@@ -93,6 +94,12 @@ function delete_item(caller){
     
     save();
 }
+
+//modify an item from the table
+function modify_item(caller){
+    console.log("OK");
+}
+
 
 //to do
 //load-file menu toggling
