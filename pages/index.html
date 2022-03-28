@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Libraries and other scripts, some may be loaded at the end of body section -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="../styles/style.css"> 
+    <link rel="stylesheet" type="text/css" href="../styles/table.css">  
+    <link rel="stylesheet" type="text/css" href="../styles/form.css">
+
+    <title>Stock X</title>
+</head>
+<body>
+
+    <!-- Main Wrapper -->
+    <div class="container">
+
+        <!-- Search bar -->
+        <span style="display: none;"> TO DO </span>
+
+        <!-- Main Table -->
+        <table id="main-table">
+            <caption>I miei prodotti</caption>
+            <thead>
+                <tr>
+                    <th scope="col">Prodotto</th>
+                    <th scope="col">Taglia</th>
+                    <th scope="col">Prezzo acquisto [€]</th>
+                    <th scope="col">Prezzo stock attuale</th>
+                    <th scope="col">Vendita indicativa</th>
+                    <th scope="col">SKU</th>
+                    <th scope="col">Chiavi</th>
+                    <th scope="col"> </th>
+                </tr>
+            </thead>
+
+            <tbody id="table-body">
+                
+
+            </tbody>
+        </table>
+
+    </div>
+
+    <!-- Add item form -->
+    <form class="add-item-form" style="text-align: center;">
+
+        <!-- deleteItemButton style is used to mean unshow-form button in this case -->
+        <button class="genericButton deleteItemButton" id="unshow-button" type="button">X</button>
+
+        <div style="margin-top: 2em;"></div>
+
+        <div class="form-group">
+            <label for="form-input--item">Prodotto</label>
+            <input type="text" class="form-control" id="form-input--item" placeholder="Prodotto">
+        </div>
+        <div class="form-group">
+            <label for="form-input--size">Taglia</label>
+            <input type="text" class="form-control" id="form-input--size" placeholder="Taglia">
+        </div>
+        <div class="form-group">
+            <label for="form-input--purchasecost">Prezzo acquisto</label>
+            <input type="text" class="form-control" id="form-input--purchasecost" placeholder="Prezzo d'acquisto">
+        </div>
+        <div class="form-group">
+            <label for="form-input--stockx">Link StockX</label>
+            <input type="text" class="form-control" id="form-input--stockx" placeholder="www.stockx.com">
+        </div>
+        <div class="form-group">
+            <label for="form-input--sku">SKU</label>
+            <input type="text" class="form-control" id="form-input--sku" placeholder="SKU">
+        </div>
+        <div class="form-group">
+            <label for="form-input--tags">Tags</label>
+            <input type="text" class="form-control" id="form-input--tags" placeholder="Tag associati">
+        </div>
+        
+        <div style="margin-top: 2em;"></div>
+
+        <button class="genericButton confirmationButton" id="add-button" type="button">Aggiungi</button>
+    </form>
+   
+    <button class="genericButton createItemButton" id="show-button">Aggiungi elemento</button>
+
+
+    <!-- Scripts to load at the end -->
+    <script src="../scripts/form.js"></script>
+
+    <!-- Fast styles for buttons, could be copy-pasted in a proper css file -->
+    <style>
+        .genericButton{
+            border: none;
+            cursor: pointer;
+            font-style: inherit;
+            font-size: 1em;
+            font-weight: bold;
+            padding: 15px;
+        }
+
+        .createItemButton {
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            margin: 10px;
+            padding: 15px;
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .deleteItemButton{
+            background-color: #c74534;
+            color: white;
+            padding: 10px;
+            margin-left: 90%;
+        }
+
+        .confirmationButton{
+            background-color: #4CAF50;
+        }
+    </style>
+</body>
+</html>

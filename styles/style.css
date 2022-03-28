@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@200;400;600&display=swap');
+
+/*
+    General impaginations rules
+*/
+
+body{
+    font-family: 'Titillium Web', sans-serif;
+}
+
+.container{
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+/*
+    Media queries
+*/
