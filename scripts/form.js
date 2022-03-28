@@ -2,7 +2,7 @@
 //also, its childrens (the items) are saved in local storage and
 //can be retrieved 
 $tablebody = $("#table-body");
-//form used to insert a new item
+//form section, used to insert a new item
 $form = $(".add-item-form");
 
 //add-item form visibility toggling
@@ -106,3 +106,44 @@ function delete_item(caller){
 
 //last session is stored
 retrieve();
+
+/*
+  <!-- Add item form -->
+    <form class="add-item-form" style="text-align: center;">
+
+        <!-- deleteItemButton style is used to mean unshow-form button in this case -->
+        <div class="form-group">
+            <button class="genericButton deleteItemButton" id="unshow-button" type="button"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M23.954 21.03l-9.184-9.095 9.092-9.174-2.832-2.807-9.09 9.179-9.176-9.088-2.81 2.81 9.186 9.105-9.095 9.184 2.81 2.81 9.112-9.192 9.18 9.1z"/></svg> </button>
+        </div>
+
+        <div class="form-group">
+            <label for="form-input--item">Prodotto</label>
+            <input type="text" class="form-control" id="form-input--item" placeholder="Prodotto">
+        </div>
+        <div class="form-group">
+            <label for="form-input--size">Taglia</label>
+            <input type="text" class="form-control" id="form-input--size" placeholder="Taglia">
+        </div>
+        <div class="form-group">
+            <label for="form-input--purchasecost">Prezzo acquisto</label>
+            <input type="text" class="form-control" id="form-input--purchasecost" placeholder="Prezzo d'acquisto">
+        </div>
+        <div class="form-group">
+            <label for="form-input--stockx">Link StockX</label>
+            <input type="text" class="form-control" id="form-input--stockx" placeholder="www.stockx.com">
+        </div>
+        <div class="form-group">
+            <label for="form-input--sku">SKU</label>
+            <input type="text" class="form-control" id="form-input--sku" placeholder="SKU">
+        </div>
+        <div class="form-group">
+            <label for="form-input--tags">Tags</label>
+            <input type="text" class="form-control" id="form-input--tags" placeholder="Tag associati">
+        </div>
+    
+        <div class="form-group">
+           <button class="genericButton confirmationButton" id="add-button" type="button"> <svg xmlns="http://www.w3.org/2000/svg" width="50px" height="50px" viewBox="0 0 24 24"><path style="fill: #4CAF50;" d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm6 13h-5v5h-2v-5h-5v-2h5v-5h2v5h5v2z"/></svg> </button>
+        </div>
+      </form>
+   
+*/
