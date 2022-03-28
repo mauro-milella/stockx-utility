@@ -46,49 +46,28 @@
 
     </div>
 
-    <!-- Add item form -->
-    <form class="add-item-form" style="text-align: center;">
-
-        <!-- deleteItemButton style is used to mean unshow-form button in this case -->
-        <button class="genericButton deleteItemButton" id="unshow-button" type="button">X</button>
-
-        <div style="margin-top: 2em;"></div>
-
-        <div class="form-group">
-            <label for="form-input--item">Prodotto</label>
+    <!-- Item insertion form -->
+    <div class="add-item-form ">
+    <div id="add-item-content-form">
+        <h2 class="header">Nuovo item</h2>
+        <div>
+        <form>
+            <button class="genericButton deleteItemButton" id="unshow-button" type="button"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M23.954 21.03l-9.184-9.095 9.092-9.174-2.832-2.807-9.09 9.179-9.176-9.088-2.81 2.81 9.186 9.105-9.095 9.184 2.81 2.81 9.112-9.192 9.18 9.1z"/></svg> </button>
             <input type="text" class="form-control" id="form-input--item" placeholder="Prodotto">
-        </div>
-        <div class="form-group">
-            <label for="form-input--size">Taglia</label>
             <input type="text" class="form-control" id="form-input--size" placeholder="Taglia">
-        </div>
-        <div class="form-group">
-            <label for="form-input--purchasecost">Prezzo acquisto</label>
             <input type="text" class="form-control" id="form-input--purchasecost" placeholder="Prezzo d'acquisto">
-        </div>
-        <div class="form-group">
-            <label for="form-input--stockx">Link StockX</label>
             <input type="text" class="form-control" id="form-input--stockx" placeholder="www.stockx.com">
-        </div>
-        <div class="form-group">
-            <label for="form-input--sku">SKU</label>
             <input type="text" class="form-control" id="form-input--sku" placeholder="SKU">
-        </div>
-        <div class="form-group">
-            <label for="form-input--tags">Tags</label>
             <input type="text" class="form-control" id="form-input--tags" placeholder="Tag associati">
+            <button class="genericButton confirmationButton" id="add-button" type="button"> <svg xmlns="http://www.w3.org/2000/svg" width="50px" height="50px" viewBox="0 0 24 24"><path style="fill: #4CAF50;" d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm6 13h-5v5h-2v-5h-5v-2h5v-5h2v5h5v2z"/></svg> </button>
+            <button type="submit">Register</button>
+        </form>
         </div>
-        
-        <div style="margin-top: 2em;"></div>
-
-        <button class="genericButton confirmationButton" id="add-button" type="button">Aggiungi</button>
-    </form>
-   
-    <button class="genericButton createItemButton" id="show-button">Aggiungi elemento</button>
-
-
-    <!-- Scripts to load at the end -->
-    <script src="../scripts/form.js"></script>
+    </div>
+    </div>
+  
+    <!-- Add item button-->
+    <button class="genericButton createItemButton" id="show-button"> <svg xmlns="http://www.w3.org/2000/svg" width="50px" height="50px" viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm6 13h-5v5h-2v-5h-5v-2h5v-5h2v5h5v2z"/></svg> </button>
 
     <!-- Fast styles for buttons, could be copy-pasted in a proper css file -->
     <style>
@@ -96,9 +75,8 @@
             border: none;
             cursor: pointer;
             font-style: inherit;
-            font-size: 1em;
             font-weight: bold;
-            padding: 15px;
+            background: transparent;
         }
 
         .createItemButton {
@@ -106,21 +84,19 @@
             bottom: 0;
             right: 0;
             margin: 10px;
-            padding: 15px;
-            background-color: #4CAF50;
-            color: white;
+            background: transparent;
         }
 
         .deleteItemButton{
             background-color: #c74534;
             color: white;
             padding: 10px;
-            margin-left: 90%;
-        }
-
-        .confirmationButton{
-            background-color: #4CAF50;
         }
     </style>
+
+    <!-- Scripts to load at the end -->
+    <script src="../scripts/form.js"></script>
+
+
 </body>
 </html>
