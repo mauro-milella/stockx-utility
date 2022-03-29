@@ -7,15 +7,11 @@
 
 
     <!-- Libraries and other scripts, some may be loaded at the end of body section -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    
     <link rel="stylesheet" type="text/css" href="../styles/bootstrap_lux.css"> 
     <link rel="stylesheet" type="text/css" href="../styles/style.css"> 
-    <link rel="stylesheet" type="text/css" href="../styles/table.css">  
+    <link rel="stylesheet" type="text/css" href="../styles/table.css"> 
     <link rel="stylesheet" type="text/css" href="../styles/form.css">
 
     <title>Stock X</title>
@@ -24,12 +20,8 @@
 
     <!-- Main Wrapper -->
     <div class="container">
-
-        <!-- Search bar -->
-        <span style="display: none;"> TO DO </span>
-
         <!-- Main Table -->
-        <h2>I miei prodotti</h2>
+        <h2 style="margin-top: 2em;">I miei prodotti</h2>
         <table class="table" id="main-table" style="color: black; font-weight: bold;">
             <thead>
                 <tr class="table-dark">
@@ -38,23 +30,22 @@
                     <th scope="col">Prezzo acquisto [€]</th>
                     <th scope="col">Prezzo stock attuale</th>
                     <th scope="col">Vendita indicativa</th>
+                    <th scope="col">Riferimento StockX</th>
                     <th scope="col">SKU</th>
                     <th scope="col">Chiavi</th>
-                    <th scope="col"> </th>
+                    <th scope="col"> </th> 
                 </tr>
             </thead>
 
-            <tbody id="table-body">
-                
-
-            </tbody>
+            <!-- Items are inserted here -->
+            <tbody id="table-body"></tbody>
         </table>
 
     </div>
 
     <!-- Item insertion form -->
     <div class="add-item-form ">
-    <div id="add-item-content-form">
+    <div id="add-item-content-form" style="Overflow-y:scroll;">
         <h2 class="header">Nuovo item</h2>
         <div>
         <form>
@@ -85,6 +76,44 @@
         </div>
     </div>
     </div>
+
+    <!-- 
+        Item modification form, see form.js "modify_item" function.
+        Mechanism is triggered from onclick event on modify button,
+        see "ITEM STRUCTURE" in form.js.
+    -->
+    <div class="modify-item-form ">
+        <div id="modify-item-content-form" style="Overflow-y:scroll;">
+            <h2 class="header">Modifica item</h2>
+            <div>
+            <form>
+                <button type="button" class="btn btn-danger" id="modify-unshow-button" style="position: absolute; top: 1em; right: 1em;">x</button>
+                
+                <label for="form-input--item" class="col-form-label">Prodotto</label>
+                <input type="text" class="form-control" id="modform-input--item" placeholder="Prodotto">
+    
+                <label for="form-input--size" class="col-form-label">Taglia</label>
+                <input type="text" class="form-control" id="modform-input--size" placeholder="Taglia">
+    
+                <label for="form-input--purchasecost" class="col-form-label">Prezzo acquisto</label>
+                <input type="text" class="form-control" id="modform-input--purchasecost" placeholder="Prezzo d'acquisto">
+    
+                <label for="form-input--stockx" class="col-form-label">Riferimento stockx</label>
+                <input type="text" class="form-control" id="modform-input--stockx" placeholder="www.stockx.com">
+    
+                <label for="form-input--sku" class="col-form-label">SKU</label>
+                <input type="text" class="form-control" id="modform-input--sku" placeholder="SKU">
+    
+                <label for="form-input--tags" class="col-form-label">Tags</label>
+                <input type="text" class="form-control" id="modform-input--tags" placeholder="Tag associati">
+    
+                <hr>
+                
+                <button type="button" class="btn btn-success" id="apply-changes-button" style="position: relative; left: 50%; transform: translate(-50%, 0%);">Conferma</button>
+             </form>
+            </div>
+        </div>
+        </div>
   
     <!-- Add item button-->    
     <button type="button" class="btn btn-success" id="show-button" style="position: fixed; bottom: 0; right: 0; margin: 1em;">Aggiungi</button>
