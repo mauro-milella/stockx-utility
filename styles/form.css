@@ -1,3 +1,4 @@
+/* Form to add a new item */
 .add-item-form{
     display: none;
 }
@@ -11,11 +12,38 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    
+
     width: 450px;
+    max-width: 90%;
+    max-height: 90%;
     margin: 0 auto;
     background-color: #fcfcfc;
     padding: 20px 50px 40px;
     box-shadow: 1px 4px 10px 1px #aaa;
     font-family: sans-serif;
-  }
+}
+
+/* Form to modify an item */
+.modify-item-form{
+    display: none;
+}
+
+.modify-item-form--active{
+    display: initial;
+}
+
+#modify-item-content-form {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 450px;
+    max-width: 90%;
+    max-height: 90%;
+    margin: 0 auto;
+    background-color: #fcfcfc;
+    padding: 20px 50px 40px;
+    box-shadow: 1px 4px 10px 1px #aaa;
+    font-family: sans-serif;
+}

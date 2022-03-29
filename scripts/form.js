@@ -1,16 +1,29 @@
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//                REFERENCES AND UTILITIES
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 //reference to table body section, in order to append childrens
 //also, its childrens (the items) are saved in local storage and
 //can be retrieved 
 $tablebody = $("#table-body");
-//form section, used to insert a new item
+//form used to insert a new item
 $form = $(".add-item-form");
+//form used to modify an item
+$modify_form = $(".modify-item-form");
 
 //add-item form visibility toggling
 $("#show-button, #unshow-button").click(function(){
     $form.toggleClass("add-item-form--active");
 })
 
-//example of item insertion
+//modify-item form visibility toggling
+//this is needed to close the modify form, 
+//which is actually opened by onclick event "modify_item"
+$("#modify-unshow-button").click(function(){
+    $modify_form.toggleClass("modify-item-form--active");
+})
+
+//Item insertion
 $("#add-button").click(function(){
 
     //get references to the form inputs
@@ -41,18 +54,19 @@ $("#add-button").click(function(){
 
     //add child to tablebody
     $("#table-body").append(
-        `<tr>
+        `<tr style="overflow-wrap: break-word;">
             <td data-label="Prodotto">` + INPUTVAL_item +  `</td>
             <td data-label="Taglia">` + INPUTVAL_size +  `</td>
             <td data-label="Prezzo acquisto">` + String(INPUTVAL_purchasecost) +  `</td>
             <td data-label="Prezzo stock attuale">` + "TODO" + `</td>
             <td data-label="Vendita indicativa">` + "TODO"  + `</td>
+            <td data-label="Link StockX">` + INPUTVAL_stockx_link +  `</td>
             <td data-label="SKU">` + INPUTVAL_sku  + `</td>
             <td data-label="tags">` + INPUTVAL_tags  + `</td>
             <td>
-                <button class="btn btn-warning" onclick="modify_item(this)">Modifica</button>
+                <button class="btn btn-warning" style="max-width: 100%;" onclick="modify_item(this)">🖊</button>
                 <hr>
-                <button class="btn btn-danger" onclick="delete_item(this)">Elimina</button>
+                <button class="btn btn-danger" style="max-width: 100%;" onclick="delete_item(this)">✘</button>
             </td>
         </tr>`
     );
@@ -97,60 +111,72 @@ function delete_item(caller){
 
 //modify an item from the table
 function modify_item(caller){
-    console.log("OK");
+    $modify_form.toggleClass("modify-item-form--active");
+
+    //get the item values
+    $item = $(caller).parent().parent().children("td:nth-child(1)");
+    $size = $(caller).parent().parent().children("td:nth-child(2)");
+    $purchasecost = $(caller).parent().parent().children("td:nth-child(3)");
+    $stockx_link = $(caller).parent().parent().children("td:nth-child(6)");
+    $sku = $(caller).parent().parent().children("td:nth-child(7)");
+    $tags = $(caller).parent().parent().children("td:nth-child(8)");
+
+    //get references where to insert values
+    $moditem = $("#modform-input--item");
+    $modsize = $("#modform-input--size");
+    $modpurchasecost = $("#modform-input--purchasecost");
+    $modstockx = $("#modform-input--stockx");
+    $modsku = $("#modform-input--sku");
+    $modtags = $("#modform-input--tags");
+
+    //values are finally inserted in the new form
+    $moditem.val($item.text());
+    $modsize.val($size.text());
+    $modpurchasecost.val($purchasecost.text());
+    $modstockx.val($stockx_link.text());
+    $modsku.val($sku.text());
+    $modtags.val($tags.text());
+
+    $("#apply-changes-button").click( 
+        //changes are applied to the table
+        function(){
+            $item.text($moditem.val());
+            $size.text($modsize.val());
+            $purchasecost.text($modpurchasecost.val());
+            $stockx_link.text($modstockx.val());
+            $sku.text($modsku.val());
+            $tags.text($modtags.val());
+
+            save();
+        }
+    );
 }
 
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//                      ITEM STRUCTURE
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/*
+    <tr style="overflow-wrap: break-word;">
+        <td data-label="Prodotto">` + INPUTVAL_item +  `</td>
+        <td data-label="Taglia">` + INPUTVAL_size +  `</td>
+        <td data-label="Prezzo acquisto">` + String(INPUTVAL_purchasecost) +  `</td>
+        <td data-label="Prezzo stock attuale">` + "TODO" + `</td>
+        <td data-label="Vendita indicativa">` + "TODO"  + `</td>
+        <td data-label="Vendita indicativa">` + INPUTVAL_stockx_link + `</td>
+        <td data-label="SKU">` + INPUTVAL_sku  + `</td>
+        <td data-label="tags">` + INPUTVAL_tags  + `</td>
+        <td>
+            <button class="btn btn-warning" style="max-width: 100%;" onclick="modify_item(this)">🖊</button>
+            <hr>
+            <button class="btn btn-danger" style="max-width: 100%;" onclick="delete_item(this)">✘</button>
+        </td>
+    </tr>
+*/
 
-//to do
-//load-file menu toggling
 
-//load from filename
-
-
-//---------------------
-//automatically invoked section
-//---------------------
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//                  AUTOMATICALLY INVOKED
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 //last session is stored
 retrieve();
-
-/*
-  <!-- Add item form -->
-    <form class="add-item-form" style="text-align: center;">
-
-        <!-- deleteItemButton style is used to mean unshow-form button in this case -->
-        <div class="form-group">
-            <button class="genericButton deleteItemButton" id="unshow-button" type="button"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M23.954 21.03l-9.184-9.095 9.092-9.174-2.832-2.807-9.09 9.179-9.176-9.088-2.81 2.81 9.186 9.105-9.095 9.184 2.81 2.81 9.112-9.192 9.18 9.1z"/></svg> </button>
-        </div>
-
-        <div class="form-group">
-            <label for="form-input--item">Prodotto</label>
-            <input type="text" class="form-control" id="form-input--item" placeholder="Prodotto">
-        </div>
-        <div class="form-group">
-            <label for="form-input--size">Taglia</label>
-            <input type="text" class="form-control" id="form-input--size" placeholder="Taglia">
-        </div>
-        <div class="form-group">
-            <label for="form-input--purchasecost">Prezzo acquisto</label>
-            <input type="text" class="form-control" id="form-input--purchasecost" placeholder="Prezzo d'acquisto">
-        </div>
-        <div class="form-group">
-            <label for="form-input--stockx">Link StockX</label>
-            <input type="text" class="form-control" id="form-input--stockx" placeholder="www.stockx.com">
-        </div>
-        <div class="form-group">
-            <label for="form-input--sku">SKU</label>
-            <input type="text" class="form-control" id="form-input--sku" placeholder="SKU">
-        </div>
-        <div class="form-group">
-            <label for="form-input--tags">Tags</label>
-            <input type="text" class="form-control" id="form-input--tags" placeholder="Tag associati">
-        </div>
-    
-        <div class="form-group">
-           <button class="genericButton confirmationButton" id="add-button" type="button"> <svg xmlns="http://www.w3.org/2000/svg" width="50px" height="50px" viewBox="0 0 24 24"><path style="fill: #4CAF50;" d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm6 13h-5v5h-2v-5h-5v-2h5v-5h2v5h5v2z"/></svg> </button>
-        </div>
-      </form>
-   
-*/
