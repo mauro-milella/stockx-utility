@@ -79,6 +79,7 @@ $("#add-button").click(function(){
     $sku.val("");
     $tags.val("");
 
+    //save on the local storage
     save();
 })
 
