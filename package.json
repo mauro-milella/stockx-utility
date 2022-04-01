@@ -1,0 +1,25 @@
+{
+  "name": "stockx-utility",
+  "version": "1.0.0",
+  "description": "A simple utility tool to manage marketing and reselling on stockx.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mauro-milella/stockx-utility.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mauro-milella/stockx-utility/issues"
+  },
+  "homepage": "https://github.com/mauro-milella/stockx-utility#readme",
+  "dependencies": {
+    "express": "^4.17.3",
+    "node-static": "^0.7.11",
+    "stockx-api": "^1.0.4"
+  }
+}
