@@ -81,6 +81,9 @@ $("#add-button").click(function(){
 
     //save on the local storage
     save();
+
+    //form is closed
+    $form.removeClass("add-item-form--active");
 })
 
 //persist the table to local storage
@@ -149,6 +152,9 @@ function modify_item(caller){
             $tags.text($modtags.val());
 
             save();
+
+            //table is closed
+            $modify_form.removeClass("modify-item-form--active");
         }
     );
 }
