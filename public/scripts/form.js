@@ -88,13 +88,54 @@ $("#add-button").click(function(){
 
 //persist the table to local storage
 function save(){
-    localStorage.setItem("items", JSON.stringify($tablebody.html()) );
+    localStorage.setItem("items", $tablebody.html() );
 }
 
 //retrieve the table from local storage
 function retrieve(){
-    table_data = JSON.parse(localStorage.getItem("items")).trim();
+    table_data = localStorage.getItem("items").trim();
     $tablebody.append(table_data);
+    return table_data;
+}
+
+//retrieve the table from specified file.
+//this function is invoked when #table-import-input value is changed.
+//.data file is expected (see form description)
+function retrieve_from_file(caller){
+    var file = caller.files[0];
+    var reader = new FileReader();
+
+    //read the file
+    reader.readAsText(file);
+
+    //when the file is read
+    reader.onload = function(){
+        //get the data
+        var data = reader.result.trim();
+        //clear the table
+        $tablebody.html("");
+        //append the data to the table
+        $tablebody.append(data);
+        //save the data to local storage
+        save();
+    };
+
+
+}
+
+//TO DO
+function export_to_file(caller){
+    const target = $("#to-export-file-input");
+    filename = target.val() + ".data";
+
+    //current table data is saved on local storage
+    save()
+    //retrieved data is send to server, asking to write on a file
+    table_data = retrieve()
+    console.log(table_data)
+
+    //TO DO - post request to server
+
 }
 
 //delete an item from the table
@@ -182,8 +223,30 @@ function modify_item(caller){
 
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//                  AJAX REQUESTS
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//To do
+function stockx_request(){
+
+    console.log("fatto")
+
+    $.ajax({
+        url: "/prova",
+        data: {
+            "targeturl": "https://stockx.com/adidas-yeezy-boost-350-v2-bone"
+        },
+        type: 'GET',
+        success: function(res) {
+            console.log(res);
+        }
+    });
+        
+}
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 //                  AUTOMATICALLY INVOKED
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 //last session is stored
 retrieve();
+stockx_request();
