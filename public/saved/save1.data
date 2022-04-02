@@ -1,0 +1,57 @@
+<tr style="overflow-wrap: break-word;">
+            <td data-label="Prodotto">1</td>
+            <td data-label="Taglia">1</td>
+            <td data-label="Prezzo acquisto">1</td>
+            <td data-label="Prezzo stock attuale">TODO</td>
+            <td data-label="Vendita indicativa">TODO</td>
+            <td data-label="Link StockX">1</td>
+            <td data-label="SKU">1</td>
+            <td data-label="tags">1</td>
+            <td>
+                <button class="btn btn-warning" style="max-width: 100%;" onclick="modify_item(this)">🖊</button>
+                <hr>
+                <button class="btn btn-danger" style="max-width: 100%;" onclick="delete_item(this)">✘</button>
+            </td>
+        </tr><tr style="overflow-wrap: break-word;">
+            <td data-label="Prodotto">2</td>
+            <td data-label="Taglia">2</td>
+            <td data-label="Prezzo acquisto">2</td>
+            <td data-label="Prezzo stock attuale">TODO</td>
+            <td data-label="Vendita indicativa">TODO</td>
+            <td data-label="Link StockX">2</td>
+            <td data-label="SKU">2</td>
+            <td data-label="tags">2</td>
+            <td>
+                <button class="btn btn-warning" style="max-width: 100%;" onclick="modify_item(this)">🖊</button>
+                <hr>
+                <button class="btn btn-danger" style="max-width: 100%;" onclick="delete_item(this)">✘</button>
+            </td>
+        </tr><tr style="overflow-wrap: break-word;">
+            <td data-label="Prodotto"></td>
+            <td data-label="Taglia">3</td>
+            <td data-label="Prezzo acquisto">3</td>
+            <td data-label="Prezzo stock attuale">TODO</td>
+            <td data-label="Vendita indicativa">TODO</td>
+            <td data-label="Link StockX">3</td>
+            <td data-label="SKU">3</td>
+            <td data-label="tags">3</td>
+            <td>
+                <button class="btn btn-warning" style="max-width: 100%;" onclick="modify_item(this)">🖊</button>
+                <hr>
+                <button class="btn btn-danger" style="max-width: 100%;" onclick="delete_item(this)">✘</button>
+            </td>
+        </tr><tr style="overflow-wrap: break-word;">
+            <td data-label="Prodotto">1212</td>
+            <td data-label="Taglia">2</td>
+            <td data-label="Prezzo acquisto">12</td>
+            <td data-label="Prezzo stock attuale">TODO</td>
+            <td data-label="Vendita indicativa">TODO</td>
+            <td data-label="Link StockX">12</td>
+            <td data-label="SKU">121</td>
+            <td data-label="tags">1</td>
+            <td>
+                <button class="btn btn-warning" style="max-width: 100%;" onclick="modify_item(this)">🖊</button>
+                <hr>
+                <button class="btn btn-danger" style="max-width: 100%;" onclick="delete_item(this)">✘</button>
+            </td>
+        </tr>
