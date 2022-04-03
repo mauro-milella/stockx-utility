@@ -8,7 +8,10 @@ const path = require('path');
 
 /* StockX API */
 const StockXAPI = require("stockx-api");
-const stockX = new StockXAPI();
+const stockX = new StockXAPI({
+  currency: "EUR",
+	userAgent: "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.84 Safari/537.36"
+});
 
 /* All files in public folder are served */
 app.use( express.static(path.join(__dirname, 'public')) ); 
@@ -17,9 +20,9 @@ app.use( express.static(path.join(__dirname, 'public')) );
 app.listen( process.env.PORT || 3000);
 
 /* Middlewares */
-app.get( "/prova", (req,res)=>{
+app.get( "/fetch", (req,res)=>{
 	//Response is returned if the promise is fullfilled
-	fetch_stockx_product_details(req.query.targeturl, res)
+	fetch_stockx_product_details(req.query.targetsize, req.query.targeturl, res)
 });
 
 app.use('*',(req,res)=>{
@@ -27,20 +30,20 @@ app.use('*',(req,res)=>{
 });
 
 /* StockX API interface */
-async function fetch_stockx_product_details(targeturl, res){
-	const sizes = ["13"];
-
+async function fetch_stockx_product_details(targetsize, targeturl, res){
 	stockX.fetchProductDetails(targeturl)
 	.then((product) => {	
 		//Highest bid is taken
 		product.variants.forEach((element) => {
-			if (sizes.includes(element.size)) {
-				res.status(200).send( String(element.market.highestBid) );
+			if (targetsize.includes(element.size)){
+				return res.status(200).send( String(element.market.highestBid) );
 			}
-		  });	
-	
+		});	
 	})
-	.catch((err) =>	console.log(`Error scraping product details: ${err.message}`)	);
+	.catch((err) =>	{
+		console.log(`Error scraping product details: ${err.message}`)	
+		return res.status(500).send(`Error`);
+	});
 }
 
 /*

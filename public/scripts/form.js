@@ -11,6 +11,9 @@ $form = $(".add-item-form");
 //form used to modify an item
 $modify_form = $(".modify-item-form");
 
+//refresh time used to get a single item update from stockx
+const refresh_time = 5000;
+
 //add-item form visibility toggling
 $("#show-button, #unshow-button").click(function(){
     $form.toggleClass("add-item-form--active");
@@ -31,7 +34,6 @@ $("#add-button").click(function(){
     $size = $("#form-input--size");
     $purchasecost = $("#form-input--purchasecost");
     $stockx_link = $("#form-input--stockx");
-    $sku = $("#form-input--sku");
     $tags = $("#form-input--tags");
 
     try{
@@ -40,7 +42,6 @@ $("#add-button").click(function(){
         INPUTVAL_size = $size.val();
         INPUTVAL_purchasecost = parseInt($purchasecost.val());
         INPUTVAL_stockx_link = $stockx_link.val();
-        INPUTVAL_sku = $sku.val();
         INPUTVAL_tags = $tags.val();
 
         if( isNaN(INPUTVAL_purchasecost) ){
@@ -60,9 +61,9 @@ $("#add-button").click(function(){
             <td data-label="Prezzo acquisto">` + String(INPUTVAL_purchasecost) +  `</td>
             <td data-label="Prezzo stock attuale">` + "TODO" + `</td>
             <td data-label="Vendita indicativa">` + "TODO"  + `</td>
-            <td data-label="Link StockX">` + INPUTVAL_stockx_link +  `</td>
-            <td data-label="SKU">` + INPUTVAL_sku  + `</td>
+            <td data-label="Vendita indicativa">` + "TODO"  + `</td>
             <td data-label="tags">` + INPUTVAL_tags  + `</td>
+            <td data-label="Link StockX">` + INPUTVAL_stockx_link +  `</td>
             <td>
                 <button class="btn btn-warning" style="max-width: 100%;" onclick="modify_item(this)">🖊</button>
                 <hr>
@@ -76,7 +77,6 @@ $("#add-button").click(function(){
     $size.val("");
     $purchasecost.val("");
     $stockx_link.val("");
-    $sku.val("");
     $tags.val("");
 
     //save on the local storage
@@ -93,9 +93,13 @@ function save(){
 
 //retrieve the table from local storage
 function retrieve(){
-    table_data = localStorage.getItem("items").trim();
+    return localStorage.getItem("items").trim();
+}
+
+//retrieve and appends to table
+function load(){
+    table_data = retrieve();
     $tablebody.append(table_data);
-    return table_data;
 }
 
 //retrieve the table from specified file.
@@ -162,16 +166,14 @@ function modify_item(caller){
     $item = $(caller).parent().parent().children("td:nth-child(1)");
     $size = $(caller).parent().parent().children("td:nth-child(2)");
     $purchasecost = $(caller).parent().parent().children("td:nth-child(3)");
-    $stockx_link = $(caller).parent().parent().children("td:nth-child(6)");
-    $sku = $(caller).parent().parent().children("td:nth-child(7)");
-    $tags = $(caller).parent().parent().children("td:nth-child(8)");
+    $stockx_link = $(caller).parent().parent().children("td:nth-child(8)");
+    $tags = $(caller).parent().parent().children("td:nth-child(7)");
 
     //get references where to insert values
     $moditem = $("#modform-input--item");
     $modsize = $("#modform-input--size");
     $modpurchasecost = $("#modform-input--purchasecost");
     $modstockx = $("#modform-input--stockx");
-    $modsku = $("#modform-input--sku");
     $modtags = $("#modform-input--tags");
 
     //values are finally inserted in the new form
@@ -179,7 +181,6 @@ function modify_item(caller){
     $modsize.val($size.text());
     $modpurchasecost.val($purchasecost.text());
     $modstockx.val($stockx_link.text());
-    $modsku.val($sku.text());
     $modtags.val($tags.text());
 
     $("#apply-changes-button").click( 
@@ -189,7 +190,6 @@ function modify_item(caller){
             $size.text($modsize.val());
             $purchasecost.text($modpurchasecost.val());
             $stockx_link.text($modstockx.val());
-            $sku.text($modsku.val());
             $tags.text($modtags.val());
 
             save();
@@ -210,9 +210,9 @@ function modify_item(caller){
         <td data-label="Prezzo acquisto">` + String(INPUTVAL_purchasecost) +  `</td>
         <td data-label="Prezzo stock attuale">` + "TODO" + `</td>
         <td data-label="Vendita indicativa">` + "TODO"  + `</td>
-        <td data-label="Vendita indicativa">` + INPUTVAL_stockx_link + `</td>
-        <td data-label="SKU">` + INPUTVAL_sku  + `</td>
+        <td data-label="Vendita indicativa">` + "TODO"  + `</td>
         <td data-label="tags">` + INPUTVAL_tags  + `</td>
+        <td data-label="Link StockX">` + INPUTVAL_stockx_link +  `</td>
         <td>
             <button class="btn btn-warning" style="max-width: 100%;" onclick="modify_item(this)">🖊</button>
             <hr>
@@ -225,22 +225,39 @@ function modify_item(caller){
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 //                  AJAX REQUESTS
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//To do
-function stockx_request(){
 
-    console.log("fatto")
+//wrapper function used to invoke stockx_request every n seconds
+function stockx_request_autoupdate(){
+    const children_itemset = $("#table-body").children();
+    for(var i=0; i<children_itemset.length; i++){
+        //an item "size" and "stockx reference" are taken
+        const current_children = children_itemset.eq(i);
+
+        const size = current_children.children("td:nth-child(2)").text();
+        const url = current_children.children("td:nth-child(8)").text();
+
+        stockx_request(size, url, current_children);
+    }
+
+    setTimeout(stockx_request_autoupdate, 50000);
+}
+
+//request to stockx.com
+function stockx_request(size, url, itemref){
 
     $.ajax({
-        url: "/prova",
+        url: "/fetch",
         data: {
-            "targeturl": "https://stockx.com/adidas-yeezy-boost-350-v2-bone"
+            "targetsize": String(size),
+            "targeturl": String(url)
         },
         type: 'GET',
         success: function(res) {
-            console.log(res);
+            //stock price is updated
+            itemref.children("td:nth-child(4)").text(res);
         }
     });
-        
+
 }
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -248,5 +265,7 @@ function stockx_request(){
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 //last session is stored
-retrieve();
-stockx_request();
+load();
+
+//perpetual itemset iteration
+stockx_request_autoupdate(refresh_time);
