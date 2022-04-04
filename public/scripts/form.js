@@ -56,19 +56,19 @@ $("#add-button").click(function(){
     //add child to tablebody
     $("#table-body").append(
         `<tr style="overflow-wrap: break-word;">
-            <td data-label="Prodotto">` + INPUTVAL_item +  `</td>
-            <td data-label="Taglia">` + INPUTVAL_size +  `</td>
-            <td data-label="Prezzo acquisto">` + String(INPUTVAL_purchasecost) +  `</td>
-            <td data-label="Prezzo stock attuale">` + "TODO" + `</td>
-            <td data-label="Vendita indicativa">` + "TODO"  + `</td>
-            <td data-label="Vendita indicativa">` + "TODO"  + `</td>
-            <td data-label="tags">` + INPUTVAL_tags  + `</td>
-            <td data-label="Link StockX">` + INPUTVAL_stockx_link +  `</td>
-            <td>
-                <button class="btn btn-warning" style="max-width: 100%;" onclick="modify_item(this)">🖊</button>
-                <hr>
-                <button class="btn btn-danger" style="max-width: 100%;" onclick="delete_item(this)">✘</button>
-            </td>
+        <td data-label="Prodotto">` + INPUTVAL_item +  `</td>
+        <td data-label="Taglia">` + INPUTVAL_size +  `</td>
+        <td data-label="Prezzo acquisto">` + String(INPUTVAL_purchasecost) +  `</td>
+        <td data-label="Prezzo stock attuale">` + "TODO" + `</td>
+        <td data-label="Vendita indicativa">` + "TODO"  + `</td>
+        <td data-label="Vendita indicativa">` + "TODO"  + `</td>
+        <td data-label="tags">` + INPUTVAL_tags  + `</td>
+        <td data-label="Link StockX">  <a href=` + INPUTVAL_stockx_link + ` target=_blank >url</a> </td>
+        <td style="padding: 0;">
+            <button class="btn btn-dark operator" onclick="fetch_item(this)">↻</button>
+            <button class="btn btn-warning operator" onclick="modify_item(this)">🖊</button>
+            <button class="btn btn-danger operator" onclick="delete_item(this)">✘</button>
+        </td>
         </tr>`
     );
 
@@ -180,7 +180,7 @@ function modify_item(caller){
     $moditem.val($item.text());
     $modsize.val($size.text());
     $modpurchasecost.val($purchasecost.text());
-    $modstockx.val($stockx_link.text());
+    $modstockx.val($stockx_link.children("a").attr("href"));    //get $stockx_link href attribute
     $modtags.val($tags.text());
 
     $("#apply-changes-button").click( 
@@ -189,7 +189,7 @@ function modify_item(caller){
             $item.text($moditem.val());
             $size.text($modsize.val());
             $purchasecost.text($modpurchasecost.val());
-            $stockx_link.text($modstockx.val());
+            $stockx_link.children("a").attr("href", $modstockx.val());
             $tags.text($modtags.val());
 
             save();
@@ -226,7 +226,36 @@ function modify_item(caller){
 //                  AJAX REQUESTS
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+function fetch_item(caller){
+    //row reference
+    const row = $(caller).parent().parent();
+
+    //payload
+    const size = row.children("td:nth-child(2)").text();
+    const url = row.children("td:nth-child(8)").children("a").attr("href");
+
+    //request started
+    stockx_request(size, url, row);
+}
+
+//request to stockx.com
+function stockx_request(size, url, itemref){
+    $.ajax({
+        url: "/fetch",
+        data: {
+            "targetsize": String(size),
+            "targeturl": String(url)
+        },
+        type: 'GET',
+        success: function(res) {
+            //stock price is updated
+            itemref.children("td:nth-child(4)").text(res);
+        }
+    });
+}
+
 //wrapper function used to invoke stockx_request every n seconds
+//deprecated, illegal.
 function stockx_request_autoupdate(){
     const children_itemset = $("#table-body").children();
     for(var i=0; i<children_itemset.length; i++){
@@ -242,30 +271,9 @@ function stockx_request_autoupdate(){
     setTimeout(stockx_request_autoupdate, 50000);
 }
 
-//request to stockx.com
-function stockx_request(size, url, itemref){
-
-    $.ajax({
-        url: "/fetch",
-        data: {
-            "targetsize": String(size),
-            "targeturl": String(url)
-        },
-        type: 'GET',
-        success: function(res) {
-            //stock price is updated
-            itemref.children("td:nth-child(4)").text(res);
-        }
-    });
-
-}
-
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 //                  AUTOMATICALLY INVOKED
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 //last session is stored
 load();
-
-//perpetual itemset iteration
-stockx_request_autoupdate(refresh_time);
