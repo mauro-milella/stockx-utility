@@ -34,6 +34,11 @@ table {
     text-transform: uppercase;
   }
   
+  .operator{
+    padding-left: 18px;  padding-right: 18px;
+    margin: 1px;
+  }
+
   @media screen and (max-width: 800px) {
     table {
       border: 0;
