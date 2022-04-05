@@ -36,7 +36,7 @@ async function fetch_stockx_product_details(targetsize, targeturl, res){
 		//Highest bid is taken
 		product.variants.forEach((element) => {
 			if (targetsize.includes(element.size)){
-				return res.status(200).send( String(element.market.highestBid) );
+				return res.status(200).send( String(element.market.lastSale + " " + element.market.highestBid) );
 			}
 		});	
 	})

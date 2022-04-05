@@ -11,7 +11,7 @@ $form = $(".add-item-form");
 //form used to modify an item
 $modify_form = $(".modify-item-form");
 
-//refresh time used to get a single item update from stockx
+//refresh time used to get a single item update from stockx (deprecated)
 const refresh_time = 5000;
 
 //add-item form visibility toggling
@@ -226,6 +226,7 @@ function modify_item(caller){
 //                  AJAX REQUESTS
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+//fetch_item (to fetch item data) -> stockx_request -> update_item
 function fetch_item(caller){
     //row reference
     const row = $(caller).parent().parent();
@@ -248,11 +249,24 @@ function stockx_request(size, url, itemref){
         },
         type: 'GET',
         success: function(res) {
+            const res_tokens = res.split(" ");
+            const lastSale = res_tokens[0];
+            const highestBid = res_tokens[1];
+            
             //stock price is updated
-            itemref.children("td:nth-child(4)").text(res);
+            update_item(itemref, lastSale, highestBid);
         }
     });
 }
+
+//itemref is a table row
+function update_item(itemref, lastSale, highestBid){
+    itemref.children("td:nth-child(4)").text(lastSale);
+    itemref.children("td:nth-child(5)").text(highestBid);
+    //indicative sale
+    itemref.children("td:nth-child(6)").text( String( parseInt(lastSale) - parseInt(highestBid) )  );
+}
+
 
 //wrapper function used to invoke stockx_request every n seconds
 //deprecated, illegal.
