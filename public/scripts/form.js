@@ -127,21 +127,6 @@ function retrieve_from_file(caller){
 
 }
 
-//TO DO
-function export_to_file(caller){
-    const target = $("#to-export-file-input");
-    filename = target.val() + ".data";
-
-    //current table data is saved on local storage
-    save()
-    //retrieved data is send to server, asking to write on a file
-    table_data = retrieve()
-    console.log(table_data)
-
-    //TO DO - post request to server
-
-}
-
 //delete an item from the table
 function delete_item(caller){
      /*
@@ -243,11 +228,11 @@ function fetch_item(caller){
 function stockx_request(size, url, itemref){
     $.ajax({
         url: "/fetch",
+        type: 'GET',
         data: {
             "targetsize": String(size),
             "targeturl": String(url)
         },
-        type: 'GET',
         success: function(res) {
             const res_tokens = res.split(" ");
             const lastSale = res_tokens[0];
@@ -265,8 +250,9 @@ function update_item(itemref, lastSale, highestBid){
     itemref.children("td:nth-child(5)").text(highestBid);
     //indicative sale
     itemref.children("td:nth-child(6)").text( String( parseInt(lastSale) - parseInt(highestBid) )  );
-}
 
+    save();
+}
 
 //wrapper function used to invoke stockx_request every n seconds
 //deprecated, illegal.
@@ -283,6 +269,28 @@ function stockx_request_autoupdate(){
     }
 
     setTimeout(stockx_request_autoupdate, 50000);
+}
+
+function export_table(caller){
+    const target = $("#to-export-file-input");
+    filename = target.val();
+    if(filename === "") return;
+
+    filename = filename + ".data";
+
+    //current table data is saved on local storage
+    save()
+    //asking to write on a file (server will get the table from local storage)
+
+    const content = localStorage.getItem("items").trim();
+
+    $.ajax({
+        url: "/export",
+        type: 'POST',
+        dataType: 'json',
+        contentType : 'application/json',
+        data: JSON.stringify({target: String(filename), data: String(content)}),   
+    });
 }
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
