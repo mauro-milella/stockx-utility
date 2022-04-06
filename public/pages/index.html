@@ -19,7 +19,12 @@
 <body>
 
     <!-- Main Wrapper -->
-    <div class="_container">
+    <div class="_container" style="padding-top: 2em;">
+        <!-- Search bar -->
+        <div class="d-flex">
+            <input class="form-control me-sm-2" type="text" placeholder="Ricerca" oninput="research(this)">
+        </div>
+
         <!-- Main Table -->
         <h2 style="margin-top: 2em;">I miei prodotti</h2>
         <table class="table" id="main-table" style="color: black; font-weight: bold;">
@@ -49,33 +54,30 @@
 
     <!-- Item insertion form -->
     <div class="add-item-form ">
-    <div id="add-item-content-form" style="Overflow-y:scroll;">
-        <h2 class="header">Nuovo item</h2>
-        <div>
-        <form>
-            <button type="button" class="btn btn-danger" id="unshow-button" style="position: absolute; top: 1em; right: 1em;">x</button>
-            <label for="form-input--item" class="col-form-label">Prodotto</label>
-            <input type="text" class="form-control" id="form-input--item" placeholder="Prodotto">
-            
+        <div id="add-item-content-form" style="Overflow-y:scroll;">
+            <h2 class="header">Nuovo item</h2>
+            <form>
+                <button type="button" class="btn btn-danger" id="unshow-button" style="position: absolute; top: 1em; right: 1em;">x</button>
+                <label for="form-input--item" class="col-form-label">Prodotto</label>
+                <input type="text" class="form-control" id="form-input--item" placeholder="Prodotto">
+                
+                <label for="form-input--size" class="col-form-label">Taglia</label>
+                <input type="text" class="form-control" id="form-input--size" placeholder="Taglia">
 
-            <label for="form-input--size" class="col-form-label">Taglia</label>
-            <input type="text" class="form-control" id="form-input--size" placeholder="Taglia">
+                <label for="form-input--purchasecost" class="col-form-label">Prezzo acquisto</label>
+                <input type="text" class="form-control" id="form-input--purchasecost" placeholder="Prezzo d'acquisto">
 
-            <label for="form-input--purchasecost" class="col-form-label">Prezzo acquisto</label>
-            <input type="text" class="form-control" id="form-input--purchasecost" placeholder="Prezzo d'acquisto">
+                <label for="form-input--stockx" class="col-form-label">Riferimento stockx</label>
+                <input type="text" class="form-control" id="form-input--stockx" placeholder="www.stockx.com">
 
-            <label for="form-input--stockx" class="col-form-label">Riferimento stockx</label>
-            <input type="text" class="form-control" id="form-input--stockx" placeholder="www.stockx.com">
+                <label for="form-input--tags" class="col-form-label">Tags</label>
+                <input type="text" class="form-control" id="form-input--tags" placeholder="Tag associati">
 
-            <label for="form-input--tags" class="col-form-label">Tags</label>
-            <input type="text" class="form-control" id="form-input--tags" placeholder="Tag associati">
-
-            <hr>
-            
-            <button type="button" class="btn btn-success" id="add-button" style="position: relative; left: 50%; transform: translate(-50%, 0%);">Conferma</button>
-         </form>
+                <hr>
+                
+                <button type="button" class="btn btn-success" id="add-button" style="position: relative; left: 50%; transform: translate(-50%, 0%);">Conferma</button>
+            </form>
         </div>
-    </div>
     </div>
 
     <!--  

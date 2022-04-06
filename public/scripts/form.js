@@ -185,6 +185,27 @@ function modify_item(caller){
     );
 }
 
+//attached to an input "oninput" function
+//table is filtered looking for a matching between input content and something in some row.
+//matching is done considering everything as a lower case function.
+function research(caller){
+    //string to search in each row
+    const pattern = caller.value.toLowerCase();
+
+    //search in each row
+    $("#table-body tr").each(function(){
+        //get the row
+        var $row = $(this);
+        //search in each children
+        $row.each(function(){
+            var $text = $(this).text().toLowerCase();
+            if($text.includes(pattern)) $row.show();
+            else                        $row.hide();
+            return;
+        })
+    });
+}
+
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 //                      ITEM STRUCTURE
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
