@@ -16,7 +16,7 @@ const stockX = new StockXAPI({
 });
 
 /* All files in public folder are served */
-app.use( express.static(path.join(__dirname, 'public')) ); 
+app.use( express.static(path.join(__dirname, 'public')) );
 
 /* To parse data in POST requests */
 app.use(bodyParser.urlencoded({
