@@ -4,7 +4,9 @@ const res = require('express/lib/response');
 const app = express();
 
 /* Utilities */
+const fs = require('fs')
 const path = require('path');
+const bodyParser = require('body-parser');
 
 /* StockX API */
 const StockXAPI = require("stockx-api");
@@ -14,12 +16,35 @@ const stockX = new StockXAPI({
 });
 
 /* All files in public folder are served */
-app.use( express.static(path.join(__dirname, 'public')) ); 
+app.use( express.static(path.join(__dirname, 'public')) );
+
+/* To parse data in POST requests */
+app.use(bodyParser.urlencoded({
+	extended: true
+})); 
+
+/* To permit long strings passage */
+app.use(express.json({limit: '10mb'}));
+app.use(express.urlencoded({limit: '10mb'}));
 
 /* Server listener */
 app.listen( process.env.PORT || 3000);
 
 /* Middlewares */
+app.post("/export", (req,res) => {
+	const filename = __dirname + "/public/saved/" + String(req.body.target);
+	//req.body.data is written in req.body.target
+	fs.writeFileSync(filename, String(req.body.data), err => {
+		if(err){	console.log(err); 	return;}
+	})
+	res.status(200);
+})
+
+app.get("/download/:filename", (req,res) => {
+	const filename = __dirname + "/public/saved/" + req.params.filename;
+	res.download(filename);
+})
+
 app.get( "/fetch", (req,res)=>{
 	//Response is returned if the promise is fullfilled
 	fetch_stockx_product_details(req.query.targetsize, req.query.targeturl, res)
