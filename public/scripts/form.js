@@ -301,17 +301,26 @@ function export_table(caller){
 
     //current table data is saved on local storage
     save()
+
     //asking to write on a file (server will get the table from local storage)
-
     const content = localStorage.getItem("items").trim();
-
     $.ajax({
         url: "/export",
         type: 'POST',
         dataType: 'json',
         contentType : 'application/json',
-        data: JSON.stringify({target: String(filename), data: String(content)}),   
+        data: JSON.stringify({target: String(filename), data: String(content)}),
     });
+
+    //file is downloaded
+    try{
+        window.open("/download/" + filename);
+    }
+    catch(err){
+        console.log(err)
+    }
+
+    target.val("");
 }
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

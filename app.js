@@ -32,12 +32,17 @@ app.listen( process.env.PORT || 3000);
 
 /* Middlewares */
 app.post("/export", (req,res) => {
+	const filename = __dirname + "/public/saved/" + String(req.body.target);
 	//req.body.data is written in req.body.target
-	fs.writeFile("public/saved/" + String(req.body.target), String(req.body.data), err => {
+	fs.writeFileSync(filename, String(req.body.data), err => {
 		if(err){	console.log(err); 	return;}
 	})
-
 	res.status(200);
+})
+
+app.get("/download/:filename", (req,res) => {
+	const filename = __dirname + "/public/saved/" + req.params.filename;
+	res.download(filename);
 })
 
 app.get( "/fetch", (req,res)=>{
