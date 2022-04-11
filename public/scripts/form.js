@@ -33,6 +33,7 @@ $("#add-button").click(function(){
     $item = $("#form-input--item");
     $size = $("#form-input--size");
     $purchasecost = $("#form-input--purchasecost");
+    $indicativesell = $("#form-input--indicativesell");
     $stockx_link = $("#form-input--stockx");
     $tags = $("#form-input--tags");
 
@@ -41,6 +42,7 @@ $("#add-button").click(function(){
         INPUTVAL_item = $item.val();
         INPUTVAL_size = $size.val();
         INPUTVAL_purchasecost = parseInt($purchasecost.val());
+        INPUTVAL_indicativesell = $indicativesell.val();
         INPUTVAL_stockx_link = $stockx_link.val();
         INPUTVAL_tags = $tags.val();
 
@@ -61,7 +63,7 @@ $("#add-button").click(function(){
         <td data-label="Prezzo acquisto">` + String(INPUTVAL_purchasecost) +  `</td>
         <td data-label="Prezzo stock attuale">` + "TODO" + `</td>
         <td data-label="Vendita indicativa">` + "TODO"  + `</td>
-        <td data-label="Vendita indicativa">` + "TODO"  + `</td>
+        <td data-label="Vendita indicativa">` + INPUTVAL_indicativesell  + `</td>
         <td data-label="tags">` + INPUTVAL_tags  + `</td>
         <td data-label="Link StockX">  <a href=` + INPUTVAL_stockx_link + ` target=_blank >url</a> </td>
         <td style="padding: 0;">
@@ -151,6 +153,7 @@ function modify_item(caller){
     $item = $(caller).parent().parent().children("td:nth-child(1)");
     $size = $(caller).parent().parent().children("td:nth-child(2)");
     $purchasecost = $(caller).parent().parent().children("td:nth-child(3)");
+    $indicativesell = $(caller).parent().parent().children("td:nth-child(6)");
     $stockx_link = $(caller).parent().parent().children("td:nth-child(8)");
     $tags = $(caller).parent().parent().children("td:nth-child(7)");
 
@@ -158,6 +161,7 @@ function modify_item(caller){
     $moditem = $("#modform-input--item");
     $modsize = $("#modform-input--size");
     $modpurchasecost = $("#modform-input--purchasecost");
+    $modindicativesell = $("#modform-input--indicativesell");
     $modstockx = $("#modform-input--stockx");
     $modtags = $("#modform-input--tags");
 
@@ -165,6 +169,7 @@ function modify_item(caller){
     $moditem.val($item.text());
     $modsize.val($size.text());
     $modpurchasecost.val($purchasecost.text());
+    $modindicativesell.val($indicativesell.text());
     $modstockx.val($stockx_link.children("a").attr("href"));    //get $stockx_link href attribute
     $modtags.val($tags.text());
 
@@ -174,6 +179,7 @@ function modify_item(caller){
             $item.text($moditem.val());
             $size.text($modsize.val());
             $purchasecost.text($modpurchasecost.val());
+            $indicativesell.text($modindicativesell.val());
             $stockx_link.children("a").attr("href", $modstockx.val());
             $tags.text($modtags.val());
 
@@ -268,10 +274,8 @@ function stockx_request(size, url, itemref){
 //itemref is a table row
 function update_item(itemref, lastSale, highestBid){
     itemref.children("td:nth-child(4)").text(lastSale);
-    itemref.children("td:nth-child(5)").text(highestBid);
-    //indicative sale
-    itemref.children("td:nth-child(6)").text( String( parseInt(lastSale) - parseInt(highestBid) )  );
-
+    var hb = highestBid;  hb = 0.88*hb - 5;
+    itemref.children("td:nth-child(5)").text(hb);
     save();
 }
 
