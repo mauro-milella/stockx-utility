@@ -20,7 +20,9 @@
   "dependencies": {
     "body-parser": "^1.20.0",
     "express": "^4.17.3",
+    "nexe": "^4.0.0-beta.19",
     "node-static": "^0.7.11",
+    "pkg": "^5.6.0",
     "stockx-api": "^1.0.5"
   }
 }

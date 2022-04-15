@@ -78,6 +78,7 @@ $("#add-button").click(function(){
     $item.val("");
     $size.val("");
     $purchasecost.val("");
+    $indicativesell.val("");
     $stockx_link.val("");
     $tags.val("");
 
@@ -274,7 +275,7 @@ function stockx_request(size, url, itemref){
 //itemref is a table row
 function update_item(itemref, lastSale, highestBid){
     itemref.children("td:nth-child(4)").text(lastSale);
-    var hb = highestBid;  hb = 0.88*hb - 5;
+    let hb = parseFloat(0.88*highestBid - 5).toFixed(2);
     itemref.children("td:nth-child(5)").text(hb);
     save();
 }
@@ -327,9 +328,26 @@ function export_table(caller){
     target.val("");
 }
 
+function perpetual_update(){
+    const children_itemset = $("#table-body").children();
+    for(var i=0; i<children_itemset.length; i++){
+        //an item "size" and "stockx reference" are taken
+        const current_children = children_itemset.eq(i);
+
+        const size = current_children.children("td:nth-child(2)").text();
+        const url = current_children.children("td:nth-child(8)").text();
+
+        //UNCOMMENT TO AUTO UPDATE
+        //stockx_request(size, url, current_children);
+    }
+
+    setTimeout(perpetual_update, 50000);
+}
+
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 //                  AUTOMATICALLY INVOKED
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 //last session is stored
 load();
+//perpetual_update();

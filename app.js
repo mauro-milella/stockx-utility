@@ -47,7 +47,13 @@ app.get("/download/:filename", (req,res) => {
 
 app.get( "/fetch", (req,res)=>{
 	//Response is returned if the promise is fullfilled
+	try{
 	fetch_stockx_product_details(req.query.targetsize, req.query.targeturl, res)
+	}
+	catch{
+		console.log(`Errorino: ${err.message}`)	
+		return res.status(500).send(`Error`);
+	}
 });
 
 app.use('*',(req,res)=>{
@@ -60,7 +66,7 @@ async function fetch_stockx_product_details(targetsize, targeturl, res){
 	.then((product) => {	
 		//Highest bid is taken
 		product.variants.forEach((element) => {
-			if (targetsize.includes(element.size)){
+			if (element.size == targetsize){
 				return res.status(200).send( String(element.market.lastSale + " " + element.market.highestBid) );
 			}
 		});	
