@@ -47,7 +47,13 @@ app.get("/download/:filename", (req,res) => {
 
 app.get( "/fetch", (req,res)=>{
 	//Response is returned if the promise is fullfilled
-	fetch_stockx_product_details(req.query.targetsize, req.query.targeturl, res)
+	try{
+		fetch_stockx_product_details(req.query.targetsize, req.query.targeturl, res)
+	}
+	catch{
+		console.log(`Error: ${err.message}`)	
+		return res.status(500).send(`Error`);
+	}
 });
 
 app.use('*',(req,res)=>{
@@ -57,13 +63,29 @@ app.use('*',(req,res)=>{
 /* StockX API interface */
 async function fetch_stockx_product_details(targetsize, targeturl, res){
 	stockX.fetchProductDetails(targeturl)
-	.then((product) => {	
-		//Highest bid is taken
+	.then((product) => {
+		let match_flag = 0;	//flag to check if the product is found
+		//if size is matched, specific properties are taken
 		product.variants.forEach((element) => {
-			if (targetsize.includes(element.size)){
+			if (element.size == targetsize){
+				match_flag = 1;
 				return res.status(200).send( String(element.market.lastSale + " " + element.market.highestBid) );
 			}
-		});	
+		});
+		//not a technical error, but size is missing
+		if (match_flag == 1) return; //no need to send error
+		
+		console.log(`Error: No size ${targetsize} found`);
+		return res.status(400).send(`Error`);
+		//to see:
+		/*
+			Why is error returned when flag is removed?
+			return statement inside forEach() should be completely handle the case when a size is found.
+
+			E.g without the "match_flag" mechanism, an error occurs in this istance:
+			size: 10
+			url: https://stockx.com/adidas-yeezy-boost-350-v2-bone
+		*/
 	})
 	.catch((err) =>	{
 		console.log(`Error scraping product details: ${err.message}`)	

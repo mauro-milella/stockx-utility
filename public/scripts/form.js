@@ -78,6 +78,7 @@ $("#add-button").click(function(){
     $item.val("");
     $size.val("");
     $purchasecost.val("");
+    $indicativesell.val("");
     $stockx_link.val("");
     $tags.val("");
 
@@ -88,9 +89,21 @@ $("#add-button").click(function(){
     $form.removeClass("add-item-form--active");
 })
 
+//removes all occurences of a string set, from a string
+function clean_string(target, ...args){
+    for(var i = 0; i < args.length; i++){
+        target = target.replace(args[i], "");
+    }
+    return target;
+}
+
 //persist the table to local storage
 function save(){
-    localStorage.setItem("items", $tablebody.html() );
+    //get the table data and clean it
+    let td = $tablebody.html();
+    td = clean_string(td, "table-success", "table-danger");
+    //setting
+    localStorage.setItem("items", td );
 }
 
 //retrieve the table from local storage
@@ -212,6 +225,15 @@ function research(caller){
     });
 }
 
+//used to show the request status in a specific row
+//usage example: row_notification(row_reference, "table-success", 5000)
+function row_notification(itemref, classname, timeout){
+    $(itemref).addClass(classname);
+    setTimeout(function(){
+        $(itemref).removeClass(classname);
+    }, timeout);
+}
+
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 //                      ITEM STRUCTURE
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -267,33 +289,24 @@ function stockx_request(size, url, itemref){
             
             //stock price is updated
             update_item(itemref, lastSale, highestBid);
+        },
+        error: function(err) {
+            row_notification(itemref, "table-danger", 5000);
         }
     });
 }
 
 //itemref is a table row
+//this function is only invoked after a successful request to stockx.com
 function update_item(itemref, lastSale, highestBid){
     itemref.children("td:nth-child(4)").text(lastSale);
-    var hb = highestBid;  hb = 0.88*hb - 5;
+    let hb = parseFloat(0.88*highestBid - 5).toFixed(2);
     itemref.children("td:nth-child(5)").text(hb);
+
     save();
-}
 
-//wrapper function used to invoke stockx_request every n seconds
-//deprecated, illegal.
-function stockx_request_autoupdate(){
-    const children_itemset = $("#table-body").children();
-    for(var i=0; i<children_itemset.length; i++){
-        //an item "size" and "stockx reference" are taken
-        const current_children = children_itemset.eq(i);
-
-        const size = current_children.children("td:nth-child(2)").text();
-        const url = current_children.children("td:nth-child(8)").text();
-
-        stockx_request(size, url, current_children);
-    }
-
-    setTimeout(stockx_request_autoupdate, 50000);
+    //success notifiation
+    row_notification(itemref, "table-success", 5000);
 }
 
 function export_table(caller){
@@ -327,9 +340,46 @@ function export_table(caller){
     target.val("");
 }
 
+function perpetual_update(){
+    const children_itemset = $("#table-body").children();
+    for(var i=0; i<children_itemset.length; i++){
+        //an item "size" and "stockx reference" are taken
+        const current_children = children_itemset.eq(i);
+
+        const size = current_children.children("td:nth-child(2)").text();
+        const url = current_children.children("td:nth-child(8)").text();
+
+        //UNCOMMENT TO AUTO UPDATE
+        //stockx_request(size, url, current_children);
+    }
+
+    setTimeout(perpetual_update, 50000);
+}
+
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 //                  AUTOMATICALLY INVOKED
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 //last session is stored
 load();
+//perpetual_update();
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//                  DEPRECATED
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+//wrapper function used to invoke stockx_request every n seconds
+function stockx_request_autoupdate(){
+    const children_itemset = $("#table-body").children();
+    for(var i=0; i<children_itemset.length; i++){
+        //an item "size" and "stockx reference" are taken
+        const current_children = children_itemset.eq(i);
+
+        const size = current_children.children("td:nth-child(2)").text();
+        const url = current_children.children("td:nth-child(8)").text();
+
+        stockx_request(size, url, current_children);
+    }
+
+    setTimeout(stockx_request_autoupdate, 50000);
+}
