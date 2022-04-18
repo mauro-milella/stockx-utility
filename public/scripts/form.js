@@ -11,8 +11,10 @@ $form = $(".add-item-form");
 //form used to modify an item
 $modify_form = $(".modify-item-form");
 
-//refresh time used to get a single item update from stockx (deprecated)
-const refresh_time = 5000;
+//refresh time used to get a single item update from stockx
+const refresh_time = 3000;
+const timer = ms => new Promise( (res) => setTimeout(res, ms) )
+
 
 //add-item form visibility toggling
 $("#show-button, #unshow-button").click(function(){
@@ -229,6 +231,8 @@ function research(caller){
 //usage example: row_notification(row_reference, "table-success", 5000)
 function row_notification(itemref, classname, timeout){
     $(itemref).addClass(classname);
+    //Infinity is used to keep error codes visible
+    if(timeout == Infinity) return;
     setTimeout(function(){
         $(itemref).removeClass(classname);
     }, timeout);
@@ -291,7 +295,7 @@ function stockx_request(size, url, itemref){
             update_item(itemref, lastSale, highestBid);
         },
         error: function(err) {
-            row_notification(itemref, "table-danger", 5000);
+            row_notification(itemref, "table-danger", Infinity);
         }
     });
 }
@@ -340,20 +344,23 @@ function export_table(caller){
     target.val("");
 }
 
-function perpetual_update(){
-    const children_itemset = $("#table-body").children();
-    for(var i=0; i<children_itemset.length; i++){
+async function perpetual_update(){
+    let current_children = $("#table-body").children().eq(0);
+
+    while(current_children != undefined){
         //an item "size" and "stockx reference" are taken
-        const current_children = children_itemset.eq(i);
-
         const size = current_children.children("td:nth-child(2)").text();
-        const url = current_children.children("td:nth-child(8)").text();
+        const url = current_children.children("td:nth-child(8)").children("a").attr("href");
 
-        //UNCOMMENT TO AUTO UPDATE
-        //stockx_request(size, url, current_children);
+        //request are slowly send to avoid ban
+        stockx_request(size, url, current_children);
+
+        await timer(refresh_time);
+        current_children = current_children.next();
+        console.log(current_children);
     }
-
-    setTimeout(perpetual_update, 50000);
+    //await timer(refresh_time);
+    setTimeout(perpetual_update, refresh_time);
 }
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -376,7 +383,7 @@ function stockx_request_autoupdate(){
         const current_children = children_itemset.eq(i);
 
         const size = current_children.children("td:nth-child(2)").text();
-        const url = current_children.children("td:nth-child(8)").text();
+        const url = current_children.children("td:nth-child(8)").children("a").attr("href");
 
         stockx_request(size, url, current_children);
     }

@@ -4,7 +4,7 @@ const res = require('express/lib/response');
 const app = express();
 
 /* Utilities */
-const fs = require('fs')
+const fs = require('fs');
 const path = require('path');
 const bodyParser = require('body-parser');
 

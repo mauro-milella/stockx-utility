@@ -1,460 +1,530 @@
-<tr style="overflow-wrap: break-word; display: none;">
-        <td data-label="Prodotto">Nike yeezy boost</td>
-        <td data-label="Taglia">11</td>
-        <td data-label="Prezzo acquisto">200</td>
-        <td data-label="Prezzo stock attuale">240</td>
-        <td data-label="Vendita indicativa">238</td>
-        <td data-label="Vendita indicativa">2</td>
-        <td data-label="tags">mucca</td>
+<tr style="overflow-wrap: break-word;" class="">
+        <td data-label="Prodotto">1</td>
+        <td data-label="Taglia">10</td>
+        <td data-label="Prezzo acquisto">1</td>
+        <td data-label="Prezzo stock attuale">241</td>
+        <td data-label="Vendita indicativa">204.44</td>
+        <td data-label="Vendita indicativa">1</td>
+        <td data-label="tags">1</td>
         <td data-label="Link StockX">  <a href="https://stockx.com/adidas-yeezy-boost-350-v2-bone" target="_blank">url</a> </td>
         <td style="padding: 0;">
             <button class="btn btn-dark operator" onclick="fetch_item(this)">↻</button>
             <button class="btn btn-warning operator" onclick="modify_item(this)">🖊</button>
             <button class="btn btn-danger operator" onclick="delete_item(this)">✘</button>
         </td>
-        </tr><tr style="overflow-wrap: break-word; display: none;">
-        <td data-label="Prodotto">Nike yeezy boost</td>
-        <td data-label="Taglia">11</td>
-        <td data-label="Prezzo acquisto">200</td>
-        <td data-label="Prezzo stock attuale">240</td>
-        <td data-label="Vendita indicativa">238</td>
-        <td data-label="Vendita indicativa">2</td>
-        <td data-label="tags">pollo</td>
+        </tr><tr style="overflow-wrap: break-word;" class="">
+        <td data-label="Prodotto">1</td>
+        <td data-label="Taglia">10</td>
+        <td data-label="Prezzo acquisto">1</td>
+        <td data-label="Prezzo stock attuale">241</td>
+        <td data-label="Vendita indicativa">204.44</td>
+        <td data-label="Vendita indicativa">1</td>
+        <td data-label="tags">1</td>
         <td data-label="Link StockX">  <a href="https://stockx.com/adidas-yeezy-boost-350-v2-bone" target="_blank">url</a> </td>
         <td style="padding: 0;">
             <button class="btn btn-dark operator" onclick="fetch_item(this)">↻</button>
             <button class="btn btn-warning operator" onclick="modify_item(this)">🖊</button>
             <button class="btn btn-danger operator" onclick="delete_item(this)">✘</button>
         </td>
-        </tr><tr style="overflow-wrap: break-word; display: none;">
-        <td data-label="Prodotto">Nike yeezy boost</td>
-        <td data-label="Taglia">11</td>
-        <td data-label="Prezzo acquisto">200</td>
-        <td data-label="Prezzo stock attuale">240</td>
-        <td data-label="Vendita indicativa">238</td>
-        <td data-label="Vendita indicativa">2</td>
-        <td data-label="tags">mucca e pollo</td>
+        </tr><tr style="overflow-wrap: break-word;" class="">
+        <td data-label="Prodotto">1</td>
+        <td data-label="Taglia">10</td>
+        <td data-label="Prezzo acquisto">1</td>
+        <td data-label="Prezzo stock attuale">241</td>
+        <td data-label="Vendita indicativa">204.44</td>
+        <td data-label="Vendita indicativa">1</td>
+        <td data-label="tags">1</td>
         <td data-label="Link StockX">  <a href="https://stockx.com/adidas-yeezy-boost-350-v2-bone" target="_blank">url</a> </td>
         <td style="padding: 0;">
             <button class="btn btn-dark operator" onclick="fetch_item(this)">↻</button>
             <button class="btn btn-warning operator" onclick="modify_item(this)">🖊</button>
             <button class="btn btn-danger operator" onclick="delete_item(this)">✘</button>
         </td>
-        </tr><tr style="overflow-wrap: break-word; display: none;">
-        <td data-label="Prodotto">Nike yeezy boost</td>
-        <td data-label="Taglia">11</td>
-        <td data-label="Prezzo acquisto">200</td>
-        <td data-label="Prezzo stock attuale">240</td>
-        <td data-label="Vendita indicativa">238</td>
-        <td data-label="Vendita indicativa">2</td>
-        <td data-label="tags">gatto</td>
+        </tr><tr style="overflow-wrap: break-word;" class="">
+        <td data-label="Prodotto">1</td>
+        <td data-label="Taglia">10</td>
+        <td data-label="Prezzo acquisto">1</td>
+        <td data-label="Prezzo stock attuale">241</td>
+        <td data-label="Vendita indicativa">204.44</td>
+        <td data-label="Vendita indicativa">1</td>
+        <td data-label="tags">1</td>
         <td data-label="Link StockX">  <a href="https://stockx.com/adidas-yeezy-boost-350-v2-bone" target="_blank">url</a> </td>
         <td style="padding: 0;">
             <button class="btn btn-dark operator" onclick="fetch_item(this)">↻</button>
             <button class="btn btn-warning operator" onclick="modify_item(this)">🖊</button>
             <button class="btn btn-danger operator" onclick="delete_item(this)">✘</button>
         </td>
-        </tr><tr style="overflow-wrap: break-word;">
-        <td data-label="Prodotto">Nike yeezy boost</td>
-        <td data-label="Taglia">11</td>
-        <td data-label="Prezzo acquisto">200</td>
-        <td data-label="Prezzo stock attuale">240</td>
-        <td data-label="Vendita indicativa">238</td>
-        <td data-label="Vendita indicativa">2</td>
-        <td data-label="tags">prova tag mucca</td>
+        </tr><tr style="overflow-wrap: break-word;" class="">
+        <td data-label="Prodotto">1</td>
+        <td data-label="Taglia">10</td>
+        <td data-label="Prezzo acquisto">1</td>
+        <td data-label="Prezzo stock attuale">241</td>
+        <td data-label="Vendita indicativa">204.44</td>
+        <td data-label="Vendita indicativa">1</td>
+        <td data-label="tags">1</td>
         <td data-label="Link StockX">  <a href="https://stockx.com/adidas-yeezy-boost-350-v2-bone" target="_blank">url</a> </td>
         <td style="padding: 0;">
             <button class="btn btn-dark operator" onclick="fetch_item(this)">↻</button>
             <button class="btn btn-warning operator" onclick="modify_item(this)">🖊</button>
             <button class="btn btn-danger operator" onclick="delete_item(this)">✘</button>
         </td>
-        </tr><tr style="overflow-wrap: break-word; display: none;">
-        <td data-label="Prodotto">Nike yeezy boost</td>
-        <td data-label="Taglia">11</td>
-        <td data-label="Prezzo acquisto">200</td>
-        <td data-label="Prezzo stock attuale">240</td>
-        <td data-label="Vendita indicativa">238</td>
-        <td data-label="Vendita indicativa">2</td>
-        <td data-label="tags"></td>
+        </tr><tr style="overflow-wrap: break-word;" class="">
+        <td data-label="Prodotto">1</td>
+        <td data-label="Taglia">10</td>
+        <td data-label="Prezzo acquisto">1</td>
+        <td data-label="Prezzo stock attuale">241</td>
+        <td data-label="Vendita indicativa">204.44</td>
+        <td data-label="Vendita indicativa">1</td>
+        <td data-label="tags">1</td>
         <td data-label="Link StockX">  <a href="https://stockx.com/adidas-yeezy-boost-350-v2-bone" target="_blank">url</a> </td>
         <td style="padding: 0;">
             <button class="btn btn-dark operator" onclick="fetch_item(this)">↻</button>
             <button class="btn btn-warning operator" onclick="modify_item(this)">🖊</button>
             <button class="btn btn-danger operator" onclick="delete_item(this)">✘</button>
         </td>
-        </tr><tr style="overflow-wrap: break-word; display: none;">
-        <td data-label="Prodotto">Nike yeezy boost</td>
-        <td data-label="Taglia">11</td>
-        <td data-label="Prezzo acquisto">200</td>
-        <td data-label="Prezzo stock attuale">240</td>
-        <td data-label="Vendita indicativa">238</td>
-        <td data-label="Vendita indicativa">2</td>
-        <td data-label="tags"></td>
+        </tr><tr style="overflow-wrap: break-word;" class="">
+        <td data-label="Prodotto">1</td>
+        <td data-label="Taglia">10</td>
+        <td data-label="Prezzo acquisto">1</td>
+        <td data-label="Prezzo stock attuale">241</td>
+        <td data-label="Vendita indicativa">204.44</td>
+        <td data-label="Vendita indicativa">1</td>
+        <td data-label="tags">1</td>
         <td data-label="Link StockX">  <a href="https://stockx.com/adidas-yeezy-boost-350-v2-bone" target="_blank">url</a> </td>
         <td style="padding: 0;">
             <button class="btn btn-dark operator" onclick="fetch_item(this)">↻</button>
             <button class="btn btn-warning operator" onclick="modify_item(this)">🖊</button>
             <button class="btn btn-danger operator" onclick="delete_item(this)">✘</button>
         </td>
-        </tr><tr style="overflow-wrap: break-word; display: none;">
-        <td data-label="Prodotto">Nike yeezy boost</td>
-        <td data-label="Taglia">11</td>
-        <td data-label="Prezzo acquisto">200</td>
-        <td data-label="Prezzo stock attuale">240</td>
-        <td data-label="Vendita indicativa">238</td>
-        <td data-label="Vendita indicativa">2</td>
-        <td data-label="tags"></td>
+        </tr><tr style="overflow-wrap: break-word;" class="">
+        <td data-label="Prodotto">1</td>
+        <td data-label="Taglia">10</td>
+        <td data-label="Prezzo acquisto">1</td>
+        <td data-label="Prezzo stock attuale">241</td>
+        <td data-label="Vendita indicativa">204.44</td>
+        <td data-label="Vendita indicativa">1</td>
+        <td data-label="tags">1</td>
         <td data-label="Link StockX">  <a href="https://stockx.com/adidas-yeezy-boost-350-v2-bone" target="_blank">url</a> </td>
         <td style="padding: 0;">
             <button class="btn btn-dark operator" onclick="fetch_item(this)">↻</button>
             <button class="btn btn-warning operator" onclick="modify_item(this)">🖊</button>
             <button class="btn btn-danger operator" onclick="delete_item(this)">✘</button>
         </td>
-        </tr><tr style="overflow-wrap: break-word; display: none;">
-        <td data-label="Prodotto">Nike yeezy boost</td>
-        <td data-label="Taglia">11</td>
-        <td data-label="Prezzo acquisto">200</td>
-        <td data-label="Prezzo stock attuale">240</td>
-        <td data-label="Vendita indicativa">238</td>
-        <td data-label="Vendita indicativa">2</td>
-        <td data-label="tags"></td>
+        </tr><tr style="overflow-wrap: break-word;" class="">
+        <td data-label="Prodotto">1</td>
+        <td data-label="Taglia">10</td>
+        <td data-label="Prezzo acquisto">1</td>
+        <td data-label="Prezzo stock attuale">241</td>
+        <td data-label="Vendita indicativa">204.44</td>
+        <td data-label="Vendita indicativa">1</td>
+        <td data-label="tags">1</td>
         <td data-label="Link StockX">  <a href="https://stockx.com/adidas-yeezy-boost-350-v2-bone" target="_blank">url</a> </td>
         <td style="padding: 0;">
             <button class="btn btn-dark operator" onclick="fetch_item(this)">↻</button>
             <button class="btn btn-warning operator" onclick="modify_item(this)">🖊</button>
             <button class="btn btn-danger operator" onclick="delete_item(this)">✘</button>
         </td>
-        </tr><tr style="overflow-wrap: break-word; display: none;">
-        <td data-label="Prodotto">Nike yeezy boost</td>
-        <td data-label="Taglia">11</td>
-        <td data-label="Prezzo acquisto">200</td>
-        <td data-label="Prezzo stock attuale">240</td>
-        <td data-label="Vendita indicativa">238</td>
-        <td data-label="Vendita indicativa">2</td>
-        <td data-label="tags"></td>
+        </tr><tr style="overflow-wrap: break-word;" class="">
+        <td data-label="Prodotto">1</td>
+        <td data-label="Taglia">10</td>
+        <td data-label="Prezzo acquisto">1</td>
+        <td data-label="Prezzo stock attuale">241</td>
+        <td data-label="Vendita indicativa">204.44</td>
+        <td data-label="Vendita indicativa">1</td>
+        <td data-label="tags">1</td>
         <td data-label="Link StockX">  <a href="https://stockx.com/adidas-yeezy-boost-350-v2-bone" target="_blank">url</a> </td>
         <td style="padding: 0;">
             <button class="btn btn-dark operator" onclick="fetch_item(this)">↻</button>
             <button class="btn btn-warning operator" onclick="modify_item(this)">🖊</button>
             <button class="btn btn-danger operator" onclick="delete_item(this)">✘</button>
         </td>
-        </tr><tr style="overflow-wrap: break-word; display: none;">
-        <td data-label="Prodotto">Nike yeezy boost</td>
-        <td data-label="Taglia">11</td>
-        <td data-label="Prezzo acquisto">200</td>
-        <td data-label="Prezzo stock attuale">240</td>
-        <td data-label="Vendita indicativa">238</td>
-        <td data-label="Vendita indicativa">2</td>
-        <td data-label="tags"></td>
+        </tr><tr style="overflow-wrap: break-word;" class="">
+        <td data-label="Prodotto">1</td>
+        <td data-label="Taglia">10</td>
+        <td data-label="Prezzo acquisto">1</td>
+        <td data-label="Prezzo stock attuale">241</td>
+        <td data-label="Vendita indicativa">204.44</td>
+        <td data-label="Vendita indicativa">1</td>
+        <td data-label="tags">1</td>
         <td data-label="Link StockX">  <a href="https://stockx.com/adidas-yeezy-boost-350-v2-bone" target="_blank">url</a> </td>
         <td style="padding: 0;">
             <button class="btn btn-dark operator" onclick="fetch_item(this)">↻</button>
             <button class="btn btn-warning operator" onclick="modify_item(this)">🖊</button>
             <button class="btn btn-danger operator" onclick="delete_item(this)">✘</button>
         </td>
-        </tr><tr style="overflow-wrap: break-word; display: none;">
-        <td data-label="Prodotto">Nike yeezy boost</td>
-        <td data-label="Taglia">11</td>
-        <td data-label="Prezzo acquisto">200</td>
-        <td data-label="Prezzo stock attuale">TODO</td>
-        <td data-label="Vendita indicativa">TODO</td>
-        <td data-label="Vendita indicativa">TODO</td>
-        <td data-label="tags"></td>
+        </tr><tr style="overflow-wrap: break-word;" class="">
+        <td data-label="Prodotto">1</td>
+        <td data-label="Taglia">10</td>
+        <td data-label="Prezzo acquisto">1</td>
+        <td data-label="Prezzo stock attuale">241</td>
+        <td data-label="Vendita indicativa">204.44</td>
+        <td data-label="Vendita indicativa">1</td>
+        <td data-label="tags">1</td>
         <td data-label="Link StockX">  <a href="https://stockx.com/adidas-yeezy-boost-350-v2-bone" target="_blank">url</a> </td>
         <td style="padding: 0;">
             <button class="btn btn-dark operator" onclick="fetch_item(this)">↻</button>
             <button class="btn btn-warning operator" onclick="modify_item(this)">🖊</button>
             <button class="btn btn-danger operator" onclick="delete_item(this)">✘</button>
         </td>
-        </tr><tr style="overflow-wrap: break-word; display: none;">
-        <td data-label="Prodotto">Nike yeezy boost</td>
-        <td data-label="Taglia">11</td>
-        <td data-label="Prezzo acquisto">200</td>
-        <td data-label="Prezzo stock attuale">TODO</td>
-        <td data-label="Vendita indicativa">TODO</td>
-        <td data-label="Vendita indicativa">TODO</td>
-        <td data-label="tags"></td>
+        </tr><tr style="overflow-wrap: break-word;" class="">
+        <td data-label="Prodotto">1</td>
+        <td data-label="Taglia">10</td>
+        <td data-label="Prezzo acquisto">1</td>
+        <td data-label="Prezzo stock attuale">241</td>
+        <td data-label="Vendita indicativa">204.44</td>
+        <td data-label="Vendita indicativa">1</td>
+        <td data-label="tags">1</td>
         <td data-label="Link StockX">  <a href="https://stockx.com/adidas-yeezy-boost-350-v2-bone" target="_blank">url</a> </td>
         <td style="padding: 0;">
             <button class="btn btn-dark operator" onclick="fetch_item(this)">↻</button>
             <button class="btn btn-warning operator" onclick="modify_item(this)">🖊</button>
             <button class="btn btn-danger operator" onclick="delete_item(this)">✘</button>
         </td>
-        </tr><tr style="overflow-wrap: break-word; display: none;">
-        <td data-label="Prodotto">Nike yeezy boost</td>
-        <td data-label="Taglia">11</td>
-        <td data-label="Prezzo acquisto">200</td>
-        <td data-label="Prezzo stock attuale">TODO</td>
-        <td data-label="Vendita indicativa">TODO</td>
-        <td data-label="Vendita indicativa">TODO</td>
-        <td data-label="tags"></td>
+        </tr><tr style="overflow-wrap: break-word;" class="">
+        <td data-label="Prodotto">1</td>
+        <td data-label="Taglia">10</td>
+        <td data-label="Prezzo acquisto">1</td>
+        <td data-label="Prezzo stock attuale">241</td>
+        <td data-label="Vendita indicativa">204.44</td>
+        <td data-label="Vendita indicativa">1</td>
+        <td data-label="tags">1</td>
         <td data-label="Link StockX">  <a href="https://stockx.com/adidas-yeezy-boost-350-v2-bone" target="_blank">url</a> </td>
         <td style="padding: 0;">
             <button class="btn btn-dark operator" onclick="fetch_item(this)">↻</button>
             <button class="btn btn-warning operator" onclick="modify_item(this)">🖊</button>
             <button class="btn btn-danger operator" onclick="delete_item(this)">✘</button>
         </td>
-        </tr><tr style="overflow-wrap: break-word; display: none;">
-        <td data-label="Prodotto">Nike yeezy boost</td>
-        <td data-label="Taglia">11</td>
-        <td data-label="Prezzo acquisto">200</td>
-        <td data-label="Prezzo stock attuale">TODO</td>
-        <td data-label="Vendita indicativa">TODO</td>
-        <td data-label="Vendita indicativa">TODO</td>
-        <td data-label="tags"></td>
+        </tr><tr style="overflow-wrap: break-word;" class="">
+        <td data-label="Prodotto">1</td>
+        <td data-label="Taglia">10</td>
+        <td data-label="Prezzo acquisto">1</td>
+        <td data-label="Prezzo stock attuale">241</td>
+        <td data-label="Vendita indicativa">204.44</td>
+        <td data-label="Vendita indicativa">1</td>
+        <td data-label="tags">1</td>
         <td data-label="Link StockX">  <a href="https://stockx.com/adidas-yeezy-boost-350-v2-bone" target="_blank">url</a> </td>
         <td style="padding: 0;">
             <button class="btn btn-dark operator" onclick="fetch_item(this)">↻</button>
             <button class="btn btn-warning operator" onclick="modify_item(this)">🖊</button>
             <button class="btn btn-danger operator" onclick="delete_item(this)">✘</button>
         </td>
-        </tr><tr style="overflow-wrap: break-word; display: none;">
-        <td data-label="Prodotto">Nike yeezy boost</td>
-        <td data-label="Taglia">11</td>
-        <td data-label="Prezzo acquisto">200</td>
-        <td data-label="Prezzo stock attuale">TODO</td>
-        <td data-label="Vendita indicativa">TODO</td>
-        <td data-label="Vendita indicativa">TODO</td>
-        <td data-label="tags"></td>
+        </tr><tr style="overflow-wrap: break-word;" class="">
+        <td data-label="Prodotto">1</td>
+        <td data-label="Taglia">10</td>
+        <td data-label="Prezzo acquisto">1</td>
+        <td data-label="Prezzo stock attuale">241</td>
+        <td data-label="Vendita indicativa">204.44</td>
+        <td data-label="Vendita indicativa">1</td>
+        <td data-label="tags">1</td>
         <td data-label="Link StockX">  <a href="https://stockx.com/adidas-yeezy-boost-350-v2-bone" target="_blank">url</a> </td>
         <td style="padding: 0;">
             <button class="btn btn-dark operator" onclick="fetch_item(this)">↻</button>
             <button class="btn btn-warning operator" onclick="modify_item(this)">🖊</button>
             <button class="btn btn-danger operator" onclick="delete_item(this)">✘</button>
         </td>
-        </tr><tr style="overflow-wrap: break-word; display: none;">
-        <td data-label="Prodotto">Nike yeezy boost</td>
-        <td data-label="Taglia">11</td>
-        <td data-label="Prezzo acquisto">200</td>
-        <td data-label="Prezzo stock attuale">TODO</td>
-        <td data-label="Vendita indicativa">TODO</td>
-        <td data-label="Vendita indicativa">TODO</td>
-        <td data-label="tags"></td>
+        </tr><tr style="overflow-wrap: break-word;" class="">
+        <td data-label="Prodotto">1</td>
+        <td data-label="Taglia">10</td>
+        <td data-label="Prezzo acquisto">1</td>
+        <td data-label="Prezzo stock attuale">241</td>
+        <td data-label="Vendita indicativa">204.44</td>
+        <td data-label="Vendita indicativa">1</td>
+        <td data-label="tags">1</td>
         <td data-label="Link StockX">  <a href="https://stockx.com/adidas-yeezy-boost-350-v2-bone" target="_blank">url</a> </td>
         <td style="padding: 0;">
             <button class="btn btn-dark operator" onclick="fetch_item(this)">↻</button>
             <button class="btn btn-warning operator" onclick="modify_item(this)">🖊</button>
             <button class="btn btn-danger operator" onclick="delete_item(this)">✘</button>
         </td>
-        </tr><tr style="overflow-wrap: break-word; display: none;">
-        <td data-label="Prodotto">Nike yeezy boost</td>
-        <td data-label="Taglia">11</td>
-        <td data-label="Prezzo acquisto">200</td>
-        <td data-label="Prezzo stock attuale">TODO</td>
-        <td data-label="Vendita indicativa">TODO</td>
-        <td data-label="Vendita indicativa">TODO</td>
-        <td data-label="tags"></td>
+        </tr><tr style="overflow-wrap: break-word;" class="">
+        <td data-label="Prodotto">1</td>
+        <td data-label="Taglia">10</td>
+        <td data-label="Prezzo acquisto">1</td>
+        <td data-label="Prezzo stock attuale">241</td>
+        <td data-label="Vendita indicativa">204.44</td>
+        <td data-label="Vendita indicativa">1</td>
+        <td data-label="tags">1</td>
         <td data-label="Link StockX">  <a href="https://stockx.com/adidas-yeezy-boost-350-v2-bone" target="_blank">url</a> </td>
         <td style="padding: 0;">
             <button class="btn btn-dark operator" onclick="fetch_item(this)">↻</button>
             <button class="btn btn-warning operator" onclick="modify_item(this)">🖊</button>
             <button class="btn btn-danger operator" onclick="delete_item(this)">✘</button>
         </td>
-        </tr><tr style="overflow-wrap: break-word; display: none;">
-        <td data-label="Prodotto">Nike yeezy boost</td>
-        <td data-label="Taglia">11</td>
-        <td data-label="Prezzo acquisto">200</td>
-        <td data-label="Prezzo stock attuale">TODO</td>
-        <td data-label="Vendita indicativa">TODO</td>
-        <td data-label="Vendita indicativa">TODO</td>
-        <td data-label="tags"></td>
+        </tr><tr style="overflow-wrap: break-word;" class="">
+        <td data-label="Prodotto">1</td>
+        <td data-label="Taglia">10</td>
+        <td data-label="Prezzo acquisto">1</td>
+        <td data-label="Prezzo stock attuale">241</td>
+        <td data-label="Vendita indicativa">204.44</td>
+        <td data-label="Vendita indicativa">1</td>
+        <td data-label="tags">1</td>
         <td data-label="Link StockX">  <a href="https://stockx.com/adidas-yeezy-boost-350-v2-bone" target="_blank">url</a> </td>
         <td style="padding: 0;">
             <button class="btn btn-dark operator" onclick="fetch_item(this)">↻</button>
             <button class="btn btn-warning operator" onclick="modify_item(this)">🖊</button>
             <button class="btn btn-danger operator" onclick="delete_item(this)">✘</button>
         </td>
-        </tr><tr style="overflow-wrap: break-word; display: none;">
-        <td data-label="Prodotto">Nike yeezy boost</td>
-        <td data-label="Taglia">11</td>
-        <td data-label="Prezzo acquisto">200</td>
-        <td data-label="Prezzo stock attuale">TODO</td>
-        <td data-label="Vendita indicativa">TODO</td>
-        <td data-label="Vendita indicativa">TODO</td>
-        <td data-label="tags"></td>
+        </tr><tr style="overflow-wrap: break-word;" class="">
+        <td data-label="Prodotto">1</td>
+        <td data-label="Taglia">10</td>
+        <td data-label="Prezzo acquisto">1</td>
+        <td data-label="Prezzo stock attuale">241</td>
+        <td data-label="Vendita indicativa">204.44</td>
+        <td data-label="Vendita indicativa">1</td>
+        <td data-label="tags">1</td>
         <td data-label="Link StockX">  <a href="https://stockx.com/adidas-yeezy-boost-350-v2-bone" target="_blank">url</a> </td>
         <td style="padding: 0;">
             <button class="btn btn-dark operator" onclick="fetch_item(this)">↻</button>
             <button class="btn btn-warning operator" onclick="modify_item(this)">🖊</button>
             <button class="btn btn-danger operator" onclick="delete_item(this)">✘</button>
         </td>
-        </tr><tr style="overflow-wrap: break-word; display: none;">
-        <td data-label="Prodotto">Nike yeezy boost</td>
-        <td data-label="Taglia">11</td>
-        <td data-label="Prezzo acquisto">200</td>
-        <td data-label="Prezzo stock attuale">TODO</td>
-        <td data-label="Vendita indicativa">TODO</td>
-        <td data-label="Vendita indicativa">TODO</td>
-        <td data-label="tags"></td>
+        </tr><tr style="overflow-wrap: break-word;" class="">
+        <td data-label="Prodotto">1</td>
+        <td data-label="Taglia">10</td>
+        <td data-label="Prezzo acquisto">1</td>
+        <td data-label="Prezzo stock attuale">241</td>
+        <td data-label="Vendita indicativa">204.44</td>
+        <td data-label="Vendita indicativa">1</td>
+        <td data-label="tags">1</td>
         <td data-label="Link StockX">  <a href="https://stockx.com/adidas-yeezy-boost-350-v2-bone" target="_blank">url</a> </td>
         <td style="padding: 0;">
             <button class="btn btn-dark operator" onclick="fetch_item(this)">↻</button>
             <button class="btn btn-warning operator" onclick="modify_item(this)">🖊</button>
             <button class="btn btn-danger operator" onclick="delete_item(this)">✘</button>
         </td>
-        </tr><tr style="overflow-wrap: break-word; display: none;">
-        <td data-label="Prodotto">Nike yeezy boost</td>
-        <td data-label="Taglia">11</td>
-        <td data-label="Prezzo acquisto">200</td>
-        <td data-label="Prezzo stock attuale">TODO</td>
-        <td data-label="Vendita indicativa">TODO</td>
-        <td data-label="Vendita indicativa">TODO</td>
-        <td data-label="tags"></td>
+        </tr><tr style="overflow-wrap: break-word;" class="">
+        <td data-label="Prodotto">1</td>
+        <td data-label="Taglia">10</td>
+        <td data-label="Prezzo acquisto">1</td>
+        <td data-label="Prezzo stock attuale">241</td>
+        <td data-label="Vendita indicativa">204.44</td>
+        <td data-label="Vendita indicativa">1</td>
+        <td data-label="tags">1</td>
         <td data-label="Link StockX">  <a href="https://stockx.com/adidas-yeezy-boost-350-v2-bone" target="_blank">url</a> </td>
         <td style="padding: 0;">
             <button class="btn btn-dark operator" onclick="fetch_item(this)">↻</button>
             <button class="btn btn-warning operator" onclick="modify_item(this)">🖊</button>
             <button class="btn btn-danger operator" onclick="delete_item(this)">✘</button>
         </td>
-        </tr><tr style="overflow-wrap: break-word; display: none;">
-        <td data-label="Prodotto">Nike yeezy boost</td>
-        <td data-label="Taglia">11</td>
-        <td data-label="Prezzo acquisto">200</td>
-        <td data-label="Prezzo stock attuale">TODO</td>
-        <td data-label="Vendita indicativa">TODO</td>
-        <td data-label="Vendita indicativa">TODO</td>
-        <td data-label="tags"></td>
+        </tr><tr style="overflow-wrap: break-word;" class="">
+        <td data-label="Prodotto">1</td>
+        <td data-label="Taglia">10</td>
+        <td data-label="Prezzo acquisto">1</td>
+        <td data-label="Prezzo stock attuale">241</td>
+        <td data-label="Vendita indicativa">204.44</td>
+        <td data-label="Vendita indicativa">1</td>
+        <td data-label="tags">1</td>
         <td data-label="Link StockX">  <a href="https://stockx.com/adidas-yeezy-boost-350-v2-bone" target="_blank">url</a> </td>
         <td style="padding: 0;">
             <button class="btn btn-dark operator" onclick="fetch_item(this)">↻</button>
             <button class="btn btn-warning operator" onclick="modify_item(this)">🖊</button>
             <button class="btn btn-danger operator" onclick="delete_item(this)">✘</button>
         </td>
-        </tr><tr style="overflow-wrap: break-word; display: none;">
-        <td data-label="Prodotto">Nike yeezy boost</td>
-        <td data-label="Taglia">11</td>
-        <td data-label="Prezzo acquisto">200</td>
-        <td data-label="Prezzo stock attuale">TODO</td>
-        <td data-label="Vendita indicativa">TODO</td>
-        <td data-label="Vendita indicativa">TODO</td>
-        <td data-label="tags"></td>
+        </tr><tr style="overflow-wrap: break-word;" class="">
+        <td data-label="Prodotto">1</td>
+        <td data-label="Taglia">10</td>
+        <td data-label="Prezzo acquisto">1</td>
+        <td data-label="Prezzo stock attuale">241</td>
+        <td data-label="Vendita indicativa">204.44</td>
+        <td data-label="Vendita indicativa">1</td>
+        <td data-label="tags">1</td>
         <td data-label="Link StockX">  <a href="https://stockx.com/adidas-yeezy-boost-350-v2-bone" target="_blank">url</a> </td>
         <td style="padding: 0;">
             <button class="btn btn-dark operator" onclick="fetch_item(this)">↻</button>
             <button class="btn btn-warning operator" onclick="modify_item(this)">🖊</button>
             <button class="btn btn-danger operator" onclick="delete_item(this)">✘</button>
         </td>
-        </tr><tr style="overflow-wrap: break-word; display: none;">
-        <td data-label="Prodotto">Nike yeezy boost</td>
-        <td data-label="Taglia">11</td>
-        <td data-label="Prezzo acquisto">200</td>
-        <td data-label="Prezzo stock attuale">TODO</td>
-        <td data-label="Vendita indicativa">TODO</td>
-        <td data-label="Vendita indicativa">TODO</td>
-        <td data-label="tags"></td>
+        </tr><tr style="overflow-wrap: break-word;" class="">
+        <td data-label="Prodotto">1</td>
+        <td data-label="Taglia">10</td>
+        <td data-label="Prezzo acquisto">1</td>
+        <td data-label="Prezzo stock attuale">241</td>
+        <td data-label="Vendita indicativa">204.44</td>
+        <td data-label="Vendita indicativa">1</td>
+        <td data-label="tags">1</td>
         <td data-label="Link StockX">  <a href="https://stockx.com/adidas-yeezy-boost-350-v2-bone" target="_blank">url</a> </td>
         <td style="padding: 0;">
             <button class="btn btn-dark operator" onclick="fetch_item(this)">↻</button>
             <button class="btn btn-warning operator" onclick="modify_item(this)">🖊</button>
             <button class="btn btn-danger operator" onclick="delete_item(this)">✘</button>
         </td>
-        </tr><tr style="overflow-wrap: break-word; display: none;">
-        <td data-label="Prodotto">Nike yeezy boost</td>
-        <td data-label="Taglia">11</td>
-        <td data-label="Prezzo acquisto">200</td>
-        <td data-label="Prezzo stock attuale">TODO</td>
-        <td data-label="Vendita indicativa">TODO</td>
-        <td data-label="Vendita indicativa">TODO</td>
-        <td data-label="tags"></td>
+        </tr><tr style="overflow-wrap: break-word;" class="">
+        <td data-label="Prodotto">1</td>
+        <td data-label="Taglia">10</td>
+        <td data-label="Prezzo acquisto">1</td>
+        <td data-label="Prezzo stock attuale">241</td>
+        <td data-label="Vendita indicativa">204.44</td>
+        <td data-label="Vendita indicativa">1</td>
+        <td data-label="tags">1</td>
         <td data-label="Link StockX">  <a href="https://stockx.com/adidas-yeezy-boost-350-v2-bone" target="_blank">url</a> </td>
         <td style="padding: 0;">
             <button class="btn btn-dark operator" onclick="fetch_item(this)">↻</button>
             <button class="btn btn-warning operator" onclick="modify_item(this)">🖊</button>
             <button class="btn btn-danger operator" onclick="delete_item(this)">✘</button>
         </td>
-        </tr><tr style="overflow-wrap: break-word; display: none;">
-        <td data-label="Prodotto">Nike yeezy boost</td>
-        <td data-label="Taglia">11</td>
-        <td data-label="Prezzo acquisto">200</td>
-        <td data-label="Prezzo stock attuale">TODO</td>
-        <td data-label="Vendita indicativa">TODO</td>
-        <td data-label="Vendita indicativa">TODO</td>
-        <td data-label="tags"></td>
+        </tr><tr style="overflow-wrap: break-word;" class="">
+        <td data-label="Prodotto">1</td>
+        <td data-label="Taglia">10</td>
+        <td data-label="Prezzo acquisto">1</td>
+        <td data-label="Prezzo stock attuale">241</td>
+        <td data-label="Vendita indicativa">204.44</td>
+        <td data-label="Vendita indicativa">1</td>
+        <td data-label="tags">1</td>
         <td data-label="Link StockX">  <a href="https://stockx.com/adidas-yeezy-boost-350-v2-bone" target="_blank">url</a> </td>
         <td style="padding: 0;">
             <button class="btn btn-dark operator" onclick="fetch_item(this)">↻</button>
             <button class="btn btn-warning operator" onclick="modify_item(this)">🖊</button>
             <button class="btn btn-danger operator" onclick="delete_item(this)">✘</button>
         </td>
-        </tr><tr style="overflow-wrap: break-word; display: none;">
-        <td data-label="Prodotto">Nike yeezy boost</td>
-        <td data-label="Taglia">11</td>
-        <td data-label="Prezzo acquisto">200</td>
-        <td data-label="Prezzo stock attuale">240</td>
-        <td data-label="Vendita indicativa">238</td>
-        <td data-label="Vendita indicativa">2</td>
-        <td data-label="tags"></td>
+        </tr><tr style="overflow-wrap: break-word;" class="">
+        <td data-label="Prodotto">1</td>
+        <td data-label="Taglia">10</td>
+        <td data-label="Prezzo acquisto">1</td>
+        <td data-label="Prezzo stock attuale">241</td>
+        <td data-label="Vendita indicativa">204.44</td>
+        <td data-label="Vendita indicativa">1</td>
+        <td data-label="tags">1</td>
         <td data-label="Link StockX">  <a href="https://stockx.com/adidas-yeezy-boost-350-v2-bone" target="_blank">url</a> </td>
         <td style="padding: 0;">
             <button class="btn btn-dark operator" onclick="fetch_item(this)">↻</button>
             <button class="btn btn-warning operator" onclick="modify_item(this)">🖊</button>
             <button class="btn btn-danger operator" onclick="delete_item(this)">✘</button>
         </td>
-        </tr><tr style="overflow-wrap: break-word; display: none;">
-        <td data-label="Prodotto">Nike yeezy boost</td>
-        <td data-label="Taglia">11</td>
-        <td data-label="Prezzo acquisto">200</td>
-        <td data-label="Prezzo stock attuale">TODO</td>
-        <td data-label="Vendita indicativa">TODO</td>
-        <td data-label="Vendita indicativa">TODO</td>
-        <td data-label="tags"></td>
+        </tr><tr style="overflow-wrap: break-word;" class="">
+        <td data-label="Prodotto">1</td>
+        <td data-label="Taglia">10</td>
+        <td data-label="Prezzo acquisto">1</td>
+        <td data-label="Prezzo stock attuale">241</td>
+        <td data-label="Vendita indicativa">204.44</td>
+        <td data-label="Vendita indicativa">1</td>
+        <td data-label="tags">1</td>
         <td data-label="Link StockX">  <a href="https://stockx.com/adidas-yeezy-boost-350-v2-bone" target="_blank">url</a> </td>
         <td style="padding: 0;">
             <button class="btn btn-dark operator" onclick="fetch_item(this)">↻</button>
             <button class="btn btn-warning operator" onclick="modify_item(this)">🖊</button>
             <button class="btn btn-danger operator" onclick="delete_item(this)">✘</button>
         </td>
-        </tr><tr style="overflow-wrap: break-word; display: none;">
-        <td data-label="Prodotto">Nike yeezy boost</td>
-        <td data-label="Taglia">11</td>
-        <td data-label="Prezzo acquisto">200</td>
-        <td data-label="Prezzo stock attuale">TODO</td>
-        <td data-label="Vendita indicativa">TODO</td>
-        <td data-label="Vendita indicativa">TODO</td>
-        <td data-label="tags"></td>
+        </tr><tr style="overflow-wrap: break-word;" class="">
+        <td data-label="Prodotto">1</td>
+        <td data-label="Taglia">10</td>
+        <td data-label="Prezzo acquisto">1</td>
+        <td data-label="Prezzo stock attuale">241</td>
+        <td data-label="Vendita indicativa">204.44</td>
+        <td data-label="Vendita indicativa">1</td>
+        <td data-label="tags">1</td>
         <td data-label="Link StockX">  <a href="https://stockx.com/adidas-yeezy-boost-350-v2-bone" target="_blank">url</a> </td>
         <td style="padding: 0;">
             <button class="btn btn-dark operator" onclick="fetch_item(this)">↻</button>
             <button class="btn btn-warning operator" onclick="modify_item(this)">🖊</button>
             <button class="btn btn-danger operator" onclick="delete_item(this)">✘</button>
         </td>
-        </tr><tr style="overflow-wrap: break-word;">
-        <td data-label="Prodotto">nike harvest moon</td>
-        <td data-label="Taglia">7</td>
-        <td data-label="Prezzo acquisto">200</td>
-        <td data-label="Prezzo stock attuale">198</td>
-        <td data-label="Vendita indicativa">167</td>
-        <td data-label="Vendita indicativa">31</td>
-        <td data-label="tags">prova</td>
-        <td data-label="Link StockX">  <a href="https://stockx.com/nike-dunk-low-harvest-moon-w" target="_blank">url</a> </td>
+        </tr><tr style="overflow-wrap: break-word;" class="">
+        <td data-label="Prodotto">1</td>
+        <td data-label="Taglia">10</td>
+        <td data-label="Prezzo acquisto">1</td>
+        <td data-label="Prezzo stock attuale">241</td>
+        <td data-label="Vendita indicativa">204.44</td>
+        <td data-label="Vendita indicativa">1</td>
+        <td data-label="tags">1</td>
+        <td data-label="Link StockX">  <a href="https://stockx.com/adidas-yeezy-boost-350-v2-bone" target="_blank">url</a> </td>
         <td style="padding: 0;">
             <button class="btn btn-dark operator" onclick="fetch_item(this)">↻</button>
             <button class="btn btn-warning operator" onclick="modify_item(this)">🖊</button>
             <button class="btn btn-danger operator" onclick="delete_item(this)">✘</button>
         </td>
-        </tr><tr style="overflow-wrap: break-word;">
-        <td data-label="Prodotto">nike harvest moon 2</td>
-        <td data-label="Taglia">7W</td>
-        <td data-label="Prezzo acquisto">120</td>
-        <td data-label="Prezzo stock attuale">198</td>
-        <td data-label="Vendita indicativa">167</td>
-        <td data-label="Vendita indicativa">31</td>
-        <td data-label="tags">prova</td>
-        <td data-label="Link StockX">  <a href="https://stockx.com/nike-dunk-low-harvest-moon-w" target="_blank">url</a> </td>
+        </tr><tr style="overflow-wrap: break-word;" class="">
+        <td data-label="Prodotto">1</td>
+        <td data-label="Taglia">10</td>
+        <td data-label="Prezzo acquisto">1</td>
+        <td data-label="Prezzo stock attuale">241</td>
+        <td data-label="Vendita indicativa">204.44</td>
+        <td data-label="Vendita indicativa">1</td>
+        <td data-label="tags">1</td>
+        <td data-label="Link StockX">  <a href="https://stockx.com/adidas-yeezy-boost-350-v2-bone" target="_blank">url</a> </td>
         <td style="padding: 0;">
             <button class="btn btn-dark operator" onclick="fetch_item(this)">↻</button>
             <button class="btn btn-warning operator" onclick="modify_item(this)">🖊</button>
             <button class="btn btn-danger operator" onclick="delete_item(this)">✘</button>
         </td>
-        </tr><tr style="overflow-wrap: break-word;">
-        <td data-label="Prodotto">12121</td>
-        <td data-label="Taglia">8W</td>
-        <td data-label="Prezzo acquisto">120</td>
-        <td data-label="Prezzo stock attuale">188</td>
-        <td data-label="Vendita indicativa">170</td>
-        <td data-label="Vendita indicativa">18</td>
-        <td data-label="tags">ok</td>
-        <td data-label="Link StockX">  <a href="https://stockx.com/nike-dunk-low-harvest-moon-w" target="_blank">url</a> </td>
+        </tr><tr style="overflow-wrap: break-word;" class="">
+        <td data-label="Prodotto">1</td>
+        <td data-label="Taglia">10</td>
+        <td data-label="Prezzo acquisto">1</td>
+        <td data-label="Prezzo stock attuale">241</td>
+        <td data-label="Vendita indicativa">204.44</td>
+        <td data-label="Vendita indicativa">1</td>
+        <td data-label="tags">1</td>
+        <td data-label="Link StockX">  <a href="https://stockx.com/adidas-yeezy-boost-350-v2-bone" target="_blank">url</a> </td>
+        <td style="padding: 0;">
+            <button class="btn btn-dark operator" onclick="fetch_item(this)">↻</button>
+            <button class="btn btn-warning operator" onclick="modify_item(this)">🖊</button>
+            <button class="btn btn-danger operator" onclick="delete_item(this)">✘</button>
+        </td>
+        </tr><tr style="overflow-wrap: break-word;" class="">
+        <td data-label="Prodotto">1</td>
+        <td data-label="Taglia">10</td>
+        <td data-label="Prezzo acquisto">1</td>
+        <td data-label="Prezzo stock attuale">241</td>
+        <td data-label="Vendita indicativa">204.44</td>
+        <td data-label="Vendita indicativa">1</td>
+        <td data-label="tags">1</td>
+        <td data-label="Link StockX">  <a href="https://stockx.com/adidas-yeezy-boost-350-v2-bone" target="_blank">url</a> </td>
+        <td style="padding: 0;">
+            <button class="btn btn-dark operator" onclick="fetch_item(this)">↻</button>
+            <button class="btn btn-warning operator" onclick="modify_item(this)">🖊</button>
+            <button class="btn btn-danger operator" onclick="delete_item(this)">✘</button>
+        </td>
+        </tr><tr style="overflow-wrap: break-word;" class="">
+        <td data-label="Prodotto">1</td>
+        <td data-label="Taglia">10</td>
+        <td data-label="Prezzo acquisto">1</td>
+        <td data-label="Prezzo stock attuale">241</td>
+        <td data-label="Vendita indicativa">204.44</td>
+        <td data-label="Vendita indicativa">1</td>
+        <td data-label="tags">1</td>
+        <td data-label="Link StockX">  <a href="https://stockx.com/adidas-yeezy-boost-350-v2-bone" target="_blank">url</a> </td>
+        <td style="padding: 0;">
+            <button class="btn btn-dark operator" onclick="fetch_item(this)">↻</button>
+            <button class="btn btn-warning operator" onclick="modify_item(this)">🖊</button>
+            <button class="btn btn-danger operator" onclick="delete_item(this)">✘</button>
+        </td>
+        </tr><tr style="overflow-wrap: break-word;" class="">
+        <td data-label="Prodotto">1</td>
+        <td data-label="Taglia">10</td>
+        <td data-label="Prezzo acquisto">1</td>
+        <td data-label="Prezzo stock attuale">241</td>
+        <td data-label="Vendita indicativa">204.44</td>
+        <td data-label="Vendita indicativa">1</td>
+        <td data-label="tags">1</td>
+        <td data-label="Link StockX">  <a href="https://stockx.com/adidas-yeezy-boost-350-v2-bone" target="_blank">url</a> </td>
+        <td style="padding: 0;">
+            <button class="btn btn-dark operator" onclick="fetch_item(this)">↻</button>
+            <button class="btn btn-warning operator" onclick="modify_item(this)">🖊</button>
+            <button class="btn btn-danger operator" onclick="delete_item(this)">✘</button>
+        </td>
+        </tr><tr style="overflow-wrap: break-word;" class="">
+        <td data-label="Prodotto">1</td>
+        <td data-label="Taglia">10</td>
+        <td data-label="Prezzo acquisto">1</td>
+        <td data-label="Prezzo stock attuale">241</td>
+        <td data-label="Vendita indicativa">204.44</td>
+        <td data-label="Vendita indicativa">1</td>
+        <td data-label="tags">1</td>
+        <td data-label="Link StockX">  <a href="https://stockx.com/adidas-yeezy-boost-350-v2-bone" target="_blank">url</a> </td>
+        <td style="padding: 0;">
+            <button class="btn btn-dark operator" onclick="fetch_item(this)">↻</button>
+            <button class="btn btn-warning operator" onclick="modify_item(this)">🖊</button>
+            <button class="btn btn-danger operator" onclick="delete_item(this)">✘</button>
+        </td>
+        </tr><tr style="overflow-wrap: break-word;" class="">
+        <td data-label="Prodotto">1</td>
+        <td data-label="Taglia">10</td>
+        <td data-label="Prezzo acquisto">1</td>
+        <td data-label="Prezzo stock attuale">241</td>
+        <td data-label="Vendita indicativa">204.44</td>
+        <td data-label="Vendita indicativa">1</td>
+        <td data-label="tags">1</td>
+        <td data-label="Link StockX">  <a href="https://stockx.com/adidas-yeezy-boost-350-v2-bone" target="_blank">url</a> </td>
         <td style="padding: 0;">
             <button class="btn btn-dark operator" onclick="fetch_item(this)">↻</button>
             <button class="btn btn-warning operator" onclick="modify_item(this)">🖊</button>
