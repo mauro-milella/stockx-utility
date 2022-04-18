@@ -10,11 +10,18 @@ $tablebody = $("#table-body");
 $form = $(".add-item-form");
 //form used to modify an item
 $modify_form = $(".modify-item-form");
+//form used to show statistics retrieved from all the items
+$statistics_form = $(".stats-form");
 
 //refresh time used to get a single item update from stockx
-const refresh_time = 3000;
+const refresh_time = 5000;
 const timer = ms => new Promise( (res) => setTimeout(res, ms) )
 
+//url sanification (country must be removed in order to avoid errors)
+//e.g ...com/it-it/product -> ...com/product
+function sanify_url(url){
+    return url.replace(/\/[a-z]{2}-[a-z]{2}\/?/, "/");
+}
 
 //add-item form visibility toggling
 $("#show-button, #unshow-button").click(function(){
@@ -27,6 +34,44 @@ $("#show-button, #unshow-button").click(function(){
 $("#modify-unshow-button").click(function(){
     $modify_form.toggleClass("modify-item-form--active");
 })
+
+//statistics form visibility toggling
+$("#show-stats-button, #unshow-stats-button").click(function(){
+    $statistics_form.toggleClass("stats-form--active");
+    if($statistics_form.hasClass("stats-form--active")){
+        update_stats();
+    }
+})
+
+//statistics form update
+function update_stats(){
+    let tot_purchase_cost = 0;
+    let tot_sell_cost = 0;
+    let tot_payout = 0;
+    let tot_indicative_sell = 0;
+
+    //accumulation
+    $tablebody.children().each(function(){
+        let row = $(this);
+        let purchase_cost = parseFloat(row.children("td:nth-child(3)").text());
+        let sell_cost = parseFloat(row.children("td:nth-child(4)").text());
+        let payout = parseFloat(row.children("td:nth-child(5)").text());
+        let indicative_sell = parseFloat(row.children("td:nth-child(6)").text());
+
+        console.log(purchase_cost, sell_cost, payout, indicative_sell)
+        
+        tot_purchase_cost += (isNaN(purchase_cost) ? 0 : purchase_cost);
+        tot_sell_cost += (isNaN(sell_cost) ? 0 : sell_cost);
+        tot_payout += (isNaN(payout) ? 0 : payout);
+        tot_indicative_sell += (isNaN(indicative_sell) ? 0 : indicative_sell);
+    })
+
+    //apply changes
+    $("#total-purchase-cost").text(tot_purchase_cost);
+    $("#total-sell-cost").text(tot_sell_cost);
+    $("#total-payout").text(tot_payout);
+    $("#total-indicative-sell").text(tot_indicative_sell);
+}
 
 //Item insertion
 $("#add-button").click(function(){
@@ -45,11 +90,14 @@ $("#add-button").click(function(){
         INPUTVAL_size = $size.val();
         INPUTVAL_purchasecost = parseInt($purchasecost.val());
         INPUTVAL_indicativesell = $indicativesell.val();
-        INPUTVAL_stockx_link = $stockx_link.val();
+        INPUTVAL_stockx_link = sanify_url( $stockx_link.val() );
         INPUTVAL_tags = $tags.val();
 
         if( isNaN(INPUTVAL_purchasecost) ){
             throw "prezzo d'acquisto non valido";
+        }
+        if( isNaN(INPUTVAL_indicativesell) ){
+            throw "prezzo di vendita non valido";
         }
     }
     catch (error){
@@ -195,7 +243,7 @@ function modify_item(caller){
             $size.text($modsize.val());
             $purchasecost.text($modpurchasecost.val());
             $indicativesell.text($modindicativesell.val());
-            $stockx_link.children("a").attr("href", $modstockx.val());
+            $stockx_link.children("a").attr("href", sanify_url( $modstockx.val()) );
             $tags.text($modtags.val());
 
             save();
@@ -345,21 +393,23 @@ function export_table(caller){
 }
 
 async function perpetual_update(){
-    let current_children = $("#table-body").children().eq(0);
+    let children_itemset = $("#table-body").children();
 
-    while(current_children != undefined){
+    //iterate through all the items one at the time
+    for(let i = 0; i < children_itemset.length; i++){
+        const current_children = children_itemset.eq(i);
         //an item "size" and "stockx reference" are taken
         const size = current_children.children("td:nth-child(2)").text();
         const url = current_children.children("td:nth-child(8)").children("a").attr("href");
+
+        //handle concurrent deletions
+        if(size == undefined || url == undefined) continue;
 
         //request are slowly send to avoid ban
         stockx_request(size, url, current_children);
 
         await timer(refresh_time);
-        current_children = current_children.next();
-        console.log(current_children);
     }
-    //await timer(refresh_time);
     setTimeout(perpetual_update, refresh_time);
 }
 
@@ -369,24 +419,4 @@ async function perpetual_update(){
 
 //last session is stored
 load();
-//perpetual_update();
-
-//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//                  DEPRECATED
-//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-//wrapper function used to invoke stockx_request every n seconds
-function stockx_request_autoupdate(){
-    const children_itemset = $("#table-body").children();
-    for(var i=0; i<children_itemset.length; i++){
-        //an item "size" and "stockx reference" are taken
-        const current_children = children_itemset.eq(i);
-
-        const size = current_children.children("td:nth-child(2)").text();
-        const url = current_children.children("td:nth-child(8)").children("a").attr("href");
-
-        stockx_request(size, url, current_children);
-    }
-
-    setTimeout(stockx_request_autoupdate, 50000);
-}
+perpetual_update();
