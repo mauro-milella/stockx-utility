@@ -69,7 +69,14 @@ async function fetch_stockx_product_details(targetsize, targeturl, res){
 		product.variants.forEach((element) => {
 			if (element.size == targetsize){
 				match_flag = 1;
-				return res.status(200).send( String(element.market.lastSale + " " + element.market.highestBid) );
+				/*
+					Client fetch operation:
+					const res_tokens = res.split(" ");
+					const first_value = res_tokens[0]
+					const second_value = res_tokens[1]
+					...
+				*/
+				return res.status(200).send( String(element.market.lastSale + " " + element.market.highestBid + " " + element.market.lowestAsk) );
 			}
 		});
 		//not a technical error, but size is missing

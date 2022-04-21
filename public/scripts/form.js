@@ -23,6 +23,14 @@ function sanify_url(url){
     return url.replace(/\/[a-z]{2}-[a-z]{2}\/?/, "/");
 }
 
+//removes all occurences of a string set, from a string
+function clean_string(target, ...args){
+    for(var i = 0; i < args.length; i++){
+        target = target.replace(args[i], "");
+    }
+    return target;
+}
+
 //add-item form visibility toggling
 $("#show-button, #unshow-button").click(function(){
     $form.toggleClass("add-item-form--active");
@@ -41,6 +49,13 @@ $("#show-stats-button, #unshow-stats-button").click(function(){
     if($statistics_form.hasClass("stats-form--active")){
         update_stats();
     }
+})
+
+//see auto_update function; button is destroyed after this call
+//to avoid PerimeterX ban (request spamming)
+$("#auto-update-button").click(function(){
+    auto_update();
+    $(this).remove();
 })
 
 //statistics form update
@@ -111,8 +126,9 @@ $("#add-button").click(function(){
         <td data-label="Prodotto">` + INPUTVAL_item +  `</td>
         <td data-label="Taglia">` + INPUTVAL_size +  `</td>
         <td data-label="Prezzo acquisto">` + String(INPUTVAL_purchasecost) +  `</td>
-        <td data-label="Prezzo stock attuale">` + "TODO" + `</td>
-        <td data-label="Vendita indicativa">` + "TODO"  + `</td>
+        <td data-label="Richiesta più bassa">` + " " +  `</td>
+        <td data-label="Prezzo stock attuale">` + " " + `</td>
+        <td data-label="Payout">` + " "  + `</td>
         <td data-label="Vendita indicativa">` + INPUTVAL_indicativesell  + `</td>
         <td data-label="tags">` + INPUTVAL_tags  + `</td>
         <td data-label="Link StockX">  <a href=` + INPUTVAL_stockx_link + ` target=_blank >url</a> </td>
@@ -138,14 +154,6 @@ $("#add-button").click(function(){
     //form is closed
     $form.removeClass("add-item-form--active");
 })
-
-//removes all occurences of a string set, from a string
-function clean_string(target, ...args){
-    for(var i = 0; i < args.length; i++){
-        target = target.replace(args[i], "");
-    }
-    return target;
-}
 
 //persist the table to local storage
 function save(){
@@ -216,9 +224,9 @@ function modify_item(caller){
     $item = $(caller).parent().parent().children("td:nth-child(1)");
     $size = $(caller).parent().parent().children("td:nth-child(2)");
     $purchasecost = $(caller).parent().parent().children("td:nth-child(3)");
-    $indicativesell = $(caller).parent().parent().children("td:nth-child(6)");
-    $stockx_link = $(caller).parent().parent().children("td:nth-child(8)");
-    $tags = $(caller).parent().parent().children("td:nth-child(7)");
+    $indicativesell = $(caller).parent().parent().children("td:nth-child(7)");
+    $stockx_link = $(caller).parent().parent().children("td:nth-child(9)");
+    $tags = $(caller).parent().parent().children("td:nth-child(8)");
 
     //get references where to insert values
     $moditem = $("#modform-input--item");
@@ -319,7 +327,7 @@ function fetch_item(caller){
 
     //payload
     const size = row.children("td:nth-child(2)").text();
-    const url = row.children("td:nth-child(8)").children("a").attr("href");
+    const url = row.children("td:nth-child(9)").children("a").attr("href");
 
     //request started
     stockx_request(size, url, row);
@@ -338,9 +346,10 @@ function stockx_request(size, url, itemref){
             const res_tokens = res.split(" ");
             const lastSale = res_tokens[0];
             const highestBid = res_tokens[1];
+            const lowestAsk = res_tokens[2];
             
             //stock price is updated
-            update_item(itemref, lastSale, highestBid);
+            update_item(itemref, lastSale, highestBid, lowestAsk);
         },
         error: function(err) {
             row_notification(itemref, "table-danger", Infinity);
@@ -350,10 +359,14 @@ function stockx_request(size, url, itemref){
 
 //itemref is a table row
 //this function is only invoked after a successful request to stockx.com
-function update_item(itemref, lastSale, highestBid){
-    itemref.children("td:nth-child(4)").text(lastSale);
+function update_item(itemref, lastSale, highestBid, lowestAsk){
+    //lowestAsk
+    itemref.children("td:nth-child(4)").text(lowestAsk);
+    //lastSale
+    itemref.children("td:nth-child(5)").text(lastSale);
+    //highestBid
     let hb = parseFloat(0.88*highestBid - 5).toFixed(2);
-    itemref.children("td:nth-child(5)").text(hb);
+    itemref.children("td:nth-child(6)").text(hb);
 
     save();
 
@@ -392,7 +405,7 @@ function export_table(caller){
     target.val("");
 }
 
-async function perpetual_update(){
+async function auto_update(){
     let children_itemset = $("#table-body").children();
 
     //iterate through all the items one at the time
@@ -400,7 +413,7 @@ async function perpetual_update(){
         const current_children = children_itemset.eq(i);
         //an item "size" and "stockx reference" are taken
         const size = current_children.children("td:nth-child(2)").text();
-        const url = current_children.children("td:nth-child(8)").children("a").attr("href");
+        const url = current_children.children("td:nth-child(9)").children("a").attr("href");
 
         //handle concurrent deletions
         if(size == undefined || url == undefined) continue;
@@ -410,7 +423,7 @@ async function perpetual_update(){
 
         await timer(refresh_time);
     }
-    setTimeout(perpetual_update, refresh_time);
+    setTimeout(auto_update, refresh_time);
 }
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -419,4 +432,7 @@ async function perpetual_update(){
 
 //last session is stored
 load();
-perpetual_update();
+
+//Uncomment to execute when page is loaded
+//Currently this is called from auto-update-button onclick event
+//auto_update()
