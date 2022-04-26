@@ -39,6 +39,14 @@ table {
     margin: 1px;
   }
 
+  .cost{
+    color: red;
+  }
+
+  .gain{
+    color: green;
+  }
+
   @media screen and (max-width: 800px) {
     table {
       border: 0;
@@ -94,10 +102,7 @@ table {
     }
   }
   
-  
-  
-  
-  
+
   
   
   

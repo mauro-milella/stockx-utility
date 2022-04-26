@@ -125,11 +125,11 @@ $("#add-button").click(function(){
         `<tr style="overflow-wrap: break-word;">
         <td data-label="Prodotto">` + INPUTVAL_item +  `</td>
         <td data-label="Taglia">` + INPUTVAL_size +  `</td>
-        <td data-label="Prezzo acquisto">` + String(INPUTVAL_purchasecost) +  `</td>
+        <td data-label="Prezzo acquisto" class="cost" >` + String(INPUTVAL_purchasecost) +  `</td>
         <td data-label="Richiesta più bassa">` + " " +  `</td>
         <td data-label="Prezzo stock attuale">` + " " + `</td>
         <td data-label="Payout">` + " "  + `</td>
-        <td data-label="Vendita indicativa">` + INPUTVAL_indicativesell  + `</td>
+        <td data-label="Vendita indicativa" class="gain" >` + INPUTVAL_indicativesell  + `</td>
         <td data-label="tags">` + INPUTVAL_tags  + `</td>
         <td data-label="Link StockX">  <a href=` + INPUTVAL_stockx_link + ` target=_blank >url</a> </td>
         <td style="padding: 0;">
