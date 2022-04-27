@@ -13,3 +13,14 @@ body{
     margin: 0 auto;
     padding: 0 20px;
 }
+
+._footer{
+    display: flex; 
+    flex-direction: row; 
+    justify-content: center; 
+    gap: 20em; 
+    background-color: rgb(240, 240, 240); 
+    padding: 2em;
+    position: fixed; bottom: 0; 
+    width: 100%;
+}

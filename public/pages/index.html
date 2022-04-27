@@ -33,7 +33,8 @@
                     <th scope="col">Prodotto</th>
                     <th scope="col">Taglia</th>
                     <th scope="col">Prezzo acquisto [€]</th>
-                    <th scope="col">Prezzo Stock</th>
+                    <th scope="col">Richiesta più bassa</th>
+                    <th scope="col">Prezzo ultima vendita</th>
                     <th scope="col">Payout</th>
                     <th scope="col">Vendita indicativa</th>
                     <th scope="col">Chiavi</th>
@@ -119,7 +120,41 @@
              </form>
             </div>
         </div>
+    </div>
+
+    <!-- Global stats form -->
+    <div class="stats-form">
+        <div id="stats-item-content-form" style="Overflow-y:scroll;">
+            <h1 class="header">Statistiche</h1>
+            <button type="button" class="btn btn-danger" id="unshow-stats-button" style="position: absolute; top: 1em; right: 1em;">x</button>
+            <br><hr>
+
+            <div class="row">
+                <h3>Totale spesa</h3>
+                <p id="total-purchase-cost">0</p>
+            </div>
+            <hr>
+
+            <div class="row">
+                <h3>Totale vendite</h3>
+                <p id="total-sell-cost">0</p>
+            </div>
+            <hr>
+
+            <div class="row">
+                <h3>Totale payout</h3>
+                <p id="total-payout">0</p>
+            </div>
+            <hr>
+
+            <div class="row">
+                <h3>Totale vendite indicativa</h3>
+                <p id="total-indicative-sell">0</p>
+            </div>
+
         </div>
+    </div>
+
 
     <!-- Import file input -->
     <div class="form-group mx-auto" style="max-width: fit-content;">
@@ -133,11 +168,15 @@
     <div class="input-group mx-auto" style="max-width: fit-content; z-index: 0;">
         <input type="text" class="form-control" placeholder="Nome file esportazione" id="to-export-file-input" aria-label="Nome file esportazione" aria-describedby="export-table-button">
         <button class="btn btn-primary" type="button" id="export-table-button" onclick="export_table(this)">Esporta</button>
-      </div>
-  
-    <!-- Add item button-->    
-    <button type="button" class="btn btn-success" id="show-button" style="position: fixed; bottom: 0; right: 0; margin: 1em;">Aggiungi</button>
-    
+    </div>
+
+    <!-- Buttons group -->
+    <div class="_footer">
+        <button type="button" class="btn btn-primary" id="show-stats-button">Statistiche</button>
+        <button type="button" class="btn btn-primary" id="auto-update-button">🗘</button>
+        <button type="button" class="btn btn-primary" id="show-button">Aggiungi</button>
+    </div>
+
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>    
 
     <!-- Scripts to load at the end -->
@@ -146,3 +185,16 @@
     
 </body>
 </html>
+
+<!--
+
+    Togliere l'autoupdate
+    Colore rosso sulla spesa e verde per gli altri
+    Input da nodejs
+
+
+    Dopo prezzo acquisto 
+
+    richiesta più bassa 
+    offerta più alta ultima vendita payout
+-->
