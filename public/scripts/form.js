@@ -61,6 +61,7 @@ $("#auto-update-button").click(function(){
 //statistics form update
 function update_stats(){
     let tot_purchase_cost = 0;
+    let tot_lowest_ask = 0;
     let tot_sell_cost = 0;
     let tot_payout = 0;
     let tot_indicative_sell = 0;
@@ -69,13 +70,15 @@ function update_stats(){
     $tablebody.children().each(function(){
         let row = $(this);
         let purchase_cost = parseFloat(row.children("td:nth-child(3)").text());
-        let sell_cost = parseFloat(row.children("td:nth-child(4)").text());
-        let payout = parseFloat(row.children("td:nth-child(5)").text());
-        let indicative_sell = parseFloat(row.children("td:nth-child(6)").text());
+        let lowest_ask = parseFloat(row.children("td:nth-child(4)").text());
+        let sell_cost = parseFloat(row.children("td:nth-child(5)").text());
+        let payout = parseFloat(row.children("td:nth-child(6)").text());
+        let indicative_sell = parseFloat(row.children("td:nth-child(7)").text());
 
         console.log(purchase_cost, sell_cost, payout, indicative_sell)
         
         tot_purchase_cost += (isNaN(purchase_cost) ? 0 : purchase_cost);
+        tot_lowest_ask += (isNaN(lowest_ask) ? 0 : lowest_ask);
         tot_sell_cost += (isNaN(sell_cost) ? 0 : sell_cost);
         tot_payout += (isNaN(payout) ? 0 : payout);
         tot_indicative_sell += (isNaN(indicative_sell) ? 0 : indicative_sell);
@@ -83,6 +86,7 @@ function update_stats(){
 
     //apply changes
     $("#total-purchase-cost").text(tot_purchase_cost);
+    $("#total-lowest-ask").text(tot_lowest_ask);
     $("#total-sell-cost").text(tot_sell_cost);
     $("#total-payout").text(tot_payout);
     $("#total-indicative-sell").text(tot_indicative_sell);
@@ -125,11 +129,11 @@ $("#add-button").click(function(){
         `<tr style="overflow-wrap: break-word;">
         <td data-label="Prodotto">` + INPUTVAL_item +  `</td>
         <td data-label="Taglia">` + INPUTVAL_size +  `</td>
-        <td data-label="Prezzo acquisto" class="cost" >` + String(INPUTVAL_purchasecost) +  `</td>
-        <td data-label="Richiesta più bassa">` + " " +  `</td>
-        <td data-label="Prezzo stock attuale">` + " " + `</td>
-        <td data-label="Payout">` + " "  + `</td>
-        <td data-label="Vendita indicativa" class="gain" >` + INPUTVAL_indicativesell  + `</td>
+        <td data-label="Prezzo acquisto" class="cost_color" >` + String(INPUTVAL_purchasecost) +  `</td>
+        <td data-label="Richiesta più bassa" class="stockx_color">` + " " +  `</td>
+        <td data-label="Prezzo stock attuale" class="stockx_color">` + " " + `</td>
+        <td data-label="Payout" class="stockx_color">` + " "  + `</td>
+        <td data-label="Vendita indicativa" class="gain_color" >` + INPUTVAL_indicativesell  + `</td>
         <td data-label="tags">` + INPUTVAL_tags  + `</td>
         <td data-label="Link StockX">  <a href=` + INPUTVAL_stockx_link + ` target=_blank >url</a> </td>
         <td style="padding: 0;">
