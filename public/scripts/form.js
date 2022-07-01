@@ -65,6 +65,7 @@ function update_stats(){
     let tot_sell_cost = 0;
     let tot_payout = 0;
     let tot_indicative_sell = 0;
+    let tot_quantity = 0;
 
     //accumulation
     $tablebody.children().each(function(){
@@ -83,6 +84,7 @@ function update_stats(){
         tot_sell_cost += (isNaN(sell_cost) ? 0 : sell_cost) * qta;
         tot_payout += (isNaN(payout) ? 0 : payout) * qta;
         tot_indicative_sell += (isNaN(indicative_sell) ? 0 : indicative_sell) * qta;
+        tot_quantity += (isNaN(qta) ? 0 : qta);
     })
 
     //apply changes
@@ -91,6 +93,7 @@ function update_stats(){
     $("#total-sell-cost").text(tot_sell_cost);
     $("#total-payout").text(tot_payout);
     $("#total-indicative-sell").text(tot_indicative_sell);
+    $("#total-quantity").text(tot_quantity);
 }
 
 //Item insertion
