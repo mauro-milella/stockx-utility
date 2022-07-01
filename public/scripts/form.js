@@ -61,31 +61,39 @@ $("#auto-update-button").click(function(){
 //statistics form update
 function update_stats(){
     let tot_purchase_cost = 0;
+    let tot_lowest_ask = 0;
     let tot_sell_cost = 0;
     let tot_payout = 0;
     let tot_indicative_sell = 0;
+    let tot_quantity = 0;
 
     //accumulation
     $tablebody.children().each(function(){
         let row = $(this);
         let purchase_cost = parseFloat(row.children("td:nth-child(3)").text());
-        let sell_cost = parseFloat(row.children("td:nth-child(4)").text());
-        let payout = parseFloat(row.children("td:nth-child(5)").text());
-        let indicative_sell = parseFloat(row.children("td:nth-child(6)").text());
+        let lowest_ask = parseFloat(row.children("td:nth-child(4)").text());
+        let sell_cost = parseFloat(row.children("td:nth-child(5)").text());
+        let payout = parseFloat(row.children("td:nth-child(6)").text());
+        let indicative_sell = parseFloat(row.children("td:nth-child(7)").text());
+        let qta = parseInt(row.children("td:nth-child(10)").text());
 
         console.log(purchase_cost, sell_cost, payout, indicative_sell)
         
-        tot_purchase_cost += (isNaN(purchase_cost) ? 0 : purchase_cost);
-        tot_sell_cost += (isNaN(sell_cost) ? 0 : sell_cost);
-        tot_payout += (isNaN(payout) ? 0 : payout);
-        tot_indicative_sell += (isNaN(indicative_sell) ? 0 : indicative_sell);
+        tot_purchase_cost += (isNaN(purchase_cost) ? 0 : purchase_cost) * qta;
+        tot_lowest_ask += (isNaN(lowest_ask) ? 0 : lowest_ask) * qta;
+        tot_sell_cost += (isNaN(sell_cost) ? 0 : sell_cost) * qta;
+        tot_payout += (isNaN(payout) ? 0 : payout) * qta;
+        tot_indicative_sell += (isNaN(indicative_sell) ? 0 : indicative_sell) * qta;
+        tot_quantity += (isNaN(qta) ? 0 : qta);
     })
 
     //apply changes
     $("#total-purchase-cost").text(tot_purchase_cost);
+    $("#total-lowest-ask").text(tot_lowest_ask);
     $("#total-sell-cost").text(tot_sell_cost);
     $("#total-payout").text(tot_payout);
     $("#total-indicative-sell").text(tot_indicative_sell);
+    $("#total-quantity").text(tot_quantity);
 }
 
 //Item insertion
@@ -98,6 +106,7 @@ $("#add-button").click(function(){
     $indicativesell = $("#form-input--indicativesell");
     $stockx_link = $("#form-input--stockx");
     $tags = $("#form-input--tags");
+    $qta = $("#form-input--qta");
 
     try{
         //get the values
@@ -107,12 +116,16 @@ $("#add-button").click(function(){
         INPUTVAL_indicativesell = $indicativesell.val();
         INPUTVAL_stockx_link = sanify_url( $stockx_link.val() );
         INPUTVAL_tags = $tags.val();
+        INPUTVAL_qta = parseInt($qta.val());
 
         if( isNaN(INPUTVAL_purchasecost) ){
             throw "prezzo d'acquisto non valido";
         }
         if( isNaN(INPUTVAL_indicativesell) ){
             throw "prezzo di vendita non valido";
+        }
+        if( isNaN(INPUTVAL_qta) ){
+            throw "quantità non valida";
         }
     }
     catch (error){
@@ -125,13 +138,14 @@ $("#add-button").click(function(){
         `<tr style="overflow-wrap: break-word;">
         <td data-label="Prodotto">` + INPUTVAL_item +  `</td>
         <td data-label="Taglia">` + INPUTVAL_size +  `</td>
-        <td data-label="Prezzo acquisto" class="cost" >` + String(INPUTVAL_purchasecost) +  `</td>
-        <td data-label="Richiesta più bassa">` + " " +  `</td>
-        <td data-label="Prezzo stock attuale">` + " " + `</td>
-        <td data-label="Payout">` + " "  + `</td>
-        <td data-label="Vendita indicativa" class="gain" >` + INPUTVAL_indicativesell  + `</td>
+        <td data-label="Prezzo acquisto" class="cost_color" >` + String(INPUTVAL_purchasecost) +  `</td>
+        <td data-label="Richiesta più bassa" class="stockx_color">` + " " +  `</td>
+        <td data-label="Prezzo stock attuale" class="stockx_color">` + " " + `</td>
+        <td data-label="Payout" class="stockx_color">` + " "  + `</td>
+        <td data-label="Vendita indicativa" class="gain_color" >` + INPUTVAL_indicativesell  + `</td>
         <td data-label="tags">` + INPUTVAL_tags  + `</td>
         <td data-label="Link StockX">  <a href=` + INPUTVAL_stockx_link + ` target=_blank >url</a> </td>
+        <td data-label="Qta">` + INPUTVAL_qta  + `</td>
         <td style="padding: 0;">
             <button class="btn btn-dark operator" onclick="fetch_item(this)">↻</button>
             <button class="btn btn-warning operator" onclick="modify_item(this)">🖊</button>
@@ -147,6 +161,7 @@ $("#add-button").click(function(){
     $indicativesell.val("");
     $stockx_link.val("");
     $tags.val("");
+    $qta.val(1);
 
     //save on the local storage
     save();
@@ -227,6 +242,7 @@ function modify_item(caller){
     $indicativesell = $(caller).parent().parent().children("td:nth-child(7)");
     $stockx_link = $(caller).parent().parent().children("td:nth-child(9)");
     $tags = $(caller).parent().parent().children("td:nth-child(8)");
+    $qta = $(caller).parent().parent().children("td:nth-child(10)");
 
     //get references where to insert values
     $moditem = $("#modform-input--item");
@@ -235,6 +251,7 @@ function modify_item(caller){
     $modindicativesell = $("#modform-input--indicativesell");
     $modstockx = $("#modform-input--stockx");
     $modtags = $("#modform-input--tags");
+    $modqta = $("#modform-input--qta");
 
     //values are finally inserted in the new form
     $moditem.val($item.text());
@@ -243,6 +260,7 @@ function modify_item(caller){
     $modindicativesell.val($indicativesell.text());
     $modstockx.val($stockx_link.children("a").attr("href"));    //get $stockx_link href attribute
     $modtags.val($tags.text());
+    $modqta.val($qta.text());
 
     $("#apply-changes-button").click( 
         //changes are applied to the table
@@ -253,6 +271,7 @@ function modify_item(caller){
             $indicativesell.text($modindicativesell.val());
             $stockx_link.children("a").attr("href", sanify_url( $modstockx.val()) );
             $tags.text($modtags.val());
+            $qta.text($modqta.val());
 
             save();
 
