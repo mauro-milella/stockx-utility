@@ -77,7 +77,7 @@ function update_stats(){
         let indicative_sell = parseFloat(row.children("td:nth-child(7)").text());
         let qta = parseInt(row.children("td:nth-child(10)").text());
 
-        console.log(purchase_cost, sell_cost, payout, indicative_sell)
+        // console.log(purchase_cost, sell_cost, payout, indicative_sell)
         
         tot_purchase_cost += (isNaN(purchase_cost) ? 0 : purchase_cost) * qta;
         tot_lowest_ask += (isNaN(lowest_ask) ? 0 : lowest_ask) * qta;
@@ -200,15 +200,11 @@ function retrieve_from_file(caller){
     //read the file
     reader.readAsText(file);
 
-    //when the file is read
+    //get the data, clear the table in body and save data to local storage
     reader.onload = function(){
-        //get the data
         var data = reader.result.trim();
-        //clear the table
         $tablebody.html("");
-        //append the data to the table
         $tablebody.append(data);
-        //save the data to local storage
         save();
     };
 

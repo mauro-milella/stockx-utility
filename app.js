@@ -5,8 +5,8 @@ const app = express();
 
 /* Utilities */
 const fs = require('fs');
-const path = require('path');
 const bodyParser = require('body-parser');
+const path = require('path');
 
 /* StockX API */
 const StockXAPI = require("stockx-api");
@@ -32,7 +32,7 @@ app.listen( process.env.PORT || 5000);
 
 /* Middlewares */
 app.post("/export", (req,res) => {
-	const filename = __dirname + "/public/saved/" + String(req.body.target);
+	const filename = path.join(__dirname, "public", "saved", String(req.body.target));
 	//req.body.data is written in req.body.target
 	fs.writeFileSync(filename, String(req.body.data), err => {
 		if(err){	console.log(err); 	return;}
@@ -41,7 +41,7 @@ app.post("/export", (req,res) => {
 })
 
 app.get("/download/:filename", (req,res) => {
-	const filename = __dirname + "/public/saved/" + req.params.filename;
+	const filename = path.join(__dirname, "public", "saved", req.params.filename);
 	res.download(filename);
 })
 
