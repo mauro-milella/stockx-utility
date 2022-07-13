@@ -14,6 +14,13 @@ body{
     padding: 0 20px;
 }
 
+._sticky_top{
+    position: sticky; 
+    top: 1em; 
+    width: 100%;
+    border: 3px solid black;
+}
+
 ._footer{
     display: flex; 
     flex-direction: row; 

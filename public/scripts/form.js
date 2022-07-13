@@ -55,7 +55,7 @@ $("#show-stats-button, #unshow-stats-button").click(function(){
 //to avoid PerimeterX ban (request spamming)
 $("#auto-update-button").click(function(){
     auto_update();
-    $(this).remove();
+    $(this).prop("disabled", true);
 })
 
 //statistics form update
@@ -438,7 +438,11 @@ async function auto_update(){
 
         await timer(refresh_time);
     }
-    setTimeout(auto_update, refresh_time);
+    
+    //Refresh button is now clickable again 
+    $("#auto-update-button").attr("disabled", false);
+    //To auto-refresh
+    //setTimeout(auto_update, refresh_time);
 }
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
